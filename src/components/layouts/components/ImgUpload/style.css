@@ -1,0 +1,9 @@
+.ant-upload .ant-btn {
+    background-color: #fff;
+    color: #929292;
+}
+
+.anticon-camera svg {
+    height: 2em;
+    width: 2em;
+}
