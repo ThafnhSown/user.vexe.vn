@@ -52,7 +52,7 @@ export const apiGetListCompanyGb = async () => {
 }
 
 export const apiOrderCoach = async (props) => {
-    return ApiConfig("/user/order-coach", props)
+    return ApiConfig("/global/order-coach", props)
 }
 
 //manage
