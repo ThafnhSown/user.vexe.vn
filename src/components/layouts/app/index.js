@@ -3,10 +3,11 @@ import Banner from "../components/Banner"
 
 function AppLayout({ children }) {
   return (
-    <div className='flex-col flex' style={{backgroundColor: "#F3F3F3"}}>
+    <div>
+    <div className='flex-col flex mobile:hidden desktop:flex' style={{backgroundColor: "#F3F3F3"}}>
       <div className='grid grid-cols-12'>
         <div className='col-span-1'></div>
-        <div className='col-span-11'>
+        <div className='col-span-11 '>
           <AdminHeader />
         </div>
       </div>
@@ -22,6 +23,15 @@ function AppLayout({ children }) {
         <div className='min-h-screen col-span-1'></div>
       </div>
     </div>
+    <div className="desktop:hidden">
+      <div>
+        <AdminHeader />
+      </div>
+        <Banner/>
+      <div className="mt-44">{children}</div>
+    </div>
+    </div>
+    
   )
 }
 

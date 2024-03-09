@@ -45,7 +45,7 @@ export const requestLoadCompany = createAsyncThunk("/global/get-list-company", a
 
 export const requestLoadNewsFeed = createAsyncThunk("/global/get-news-feed", async() => {
   const res = await apiGetListNews()
-  console.log("sopn", res.data.data.content)
+  // console.log("sopn", res.data.data.content)
   return res.data.data.content
 })
 

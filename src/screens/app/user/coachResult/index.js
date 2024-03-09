@@ -36,8 +36,8 @@ const CoachResult = () => {
     }, [])
     
     return (
-        <div className="flex flex-row space-x-8">
-            <div className="w-1/3 space-y-4">
+        <div className="flex flex-row space-x-8 mobile:space-x-12">
+            <div className="w-1/3 space-y-4 mobile:hidden desktop:flex flex-col">
                 <Card>
                     <Title level={4}>Sắp xếp</Title>
                     <Radio.Group onChange={() => console.log("value")} defaultValue={1}>

@@ -12,6 +12,13 @@ module.exports = {
         'banner': "url('./assets/banner.png')"
       }
     },
+    screens: {
+      'mobile': '300px',
+      'desktop': '900px'
+    },
+    colors: {
+      'background': '#498428'
+    }
   },
   plugins: [],
 }

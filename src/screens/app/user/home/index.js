@@ -19,20 +19,20 @@ const Home = () => {
 
     return (
         <div className='flex flex-col'>
-            <div>
+            {/* <div>
                 <Title level={3} style={{color:"#006D38"}}>ĐIỂM ĐẾN PHỔ BIẾN</Title>
                 {
                     listNews.length ? listNews.map(news => <NewsCard news={news}/>) : null
                 }
-            </div>
+            </div> */}
             <div>
 
             </div>
-            <div className='flex flex-col items-center'>
-            <Title level={2} style={{color:"#006D38"}}>TẠI SAO NÊN CHỌN VEXE.VN</Title>
-            <div className='flex flex-row justify-center space-x-6'>
+            <div className='flex flex-col justify-center items-center'>
+            <Title level={2} style={{color:"#006D38"}}><p className='mobile:text-base desktop:text-3xl'>TẠI SAO NÊN CHỌN VEXE.VN</p></Title>
+            <div className='flex mobile:flex-col desktop:flex-row justify-center space-x-6'>
                 
-                <div className='flex flex-col items-center w-80 space-y-3'>
+                <div className='flex flex-col items-center w-80 space-y-3 mobile:ml-4'>
                     <img src={datve}/>
                     <Title level={4}>Đặt vé dễ dàng</Title>
                     <p>Đặt vé trực tiếp với các hãng xe không qua trung gian. Thao tác đơn giản, thông tin điểm đón và điểm trả rõ ràng.</p>
