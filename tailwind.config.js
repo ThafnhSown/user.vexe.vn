@@ -17,7 +17,10 @@ module.exports = {
       'desktop': '900px'
     },
     colors: {
-      'background': '#498428'
+      'green': "#006D38",
+      'neutral': "#F3F3F3",
+      'background': '#498428',
+      'white': '#fff'
     }
   },
   plugins: [],

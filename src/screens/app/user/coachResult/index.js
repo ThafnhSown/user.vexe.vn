@@ -74,7 +74,7 @@ const CoachResult = () => {
                   
                 </Card>
             </div>
-            <div className="w-3/4">
+            <div className="w-3/4 space-y-4">
                 {
                     filter ? listRes.map(r => <CardCoach coach={r} currentCoach={currentCoach} setCurrentCoach={setCurrentCoach} modalShow={modalShow} setModalShow={setModalShow}/>) : result.map(r => <CardCoach coach={r} currentCoach={currentCoach} setCurrentCoach={setCurrentCoach} modalShow={modalShow} setModalShow={setModalShow}/>)
                 }

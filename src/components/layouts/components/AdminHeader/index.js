@@ -41,19 +41,19 @@ function AdminHeader() {
 
   return (
     <div>
-    <div className='flex-row h-20 grid grid-cols-12 mobile:hidden desktop:grid'>
+    <div className='flex-row h-16 grid grid-cols-12 mobile:hidden desktop:grid'>
           <div className='flex flex-row items-center col-span-2 w-full'>
             <img src={logo}/>
           </div>
           <div className='col-span-5'/>
           <div className='flex flex-row items-center col-span-5'>
-            <Link to="/" className='focus:text-green-700 font-bold text-lg px-6'>
+            <Link to="/" className='focus:text-green font-bold text-lg px-6'>
                 Trang chủ
             </Link>
-            <Link to="/hang-xe" className='focus:text-green-700 font-bold text-lg px-6'>
+            <Link to="/hang-xe" className='focus:text-green font-bold text-lg px-6'>
                 Hãng xe đăng ký
             </Link>
-            <Link to="/tin-tuc" className='focus:text-green-700 font-bold text-lg px-6'>
+            <Link to="/tin-tuc" className='focus:text-green font-bold text-lg px-6'>
                 Tin tức
             </Link>
           </div>

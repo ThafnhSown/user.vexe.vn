@@ -15,7 +15,8 @@ const ModalOrder = (props) => {
 
     const orderCoach = async () => {
         const data = form.getFieldsValue()
-        const sss = {...data, timeslotId: currentCoach.timeslotId, pickUpPointId: currentCoach.startPoint.id, dropOffPointId: currentCoach.endPoint.id, departureDate: date, userId: 32}
+        const sss = {...data, timeslotId: currentCoach.timeslotId, pickUpPointId: currentCoach.startPoint.id, dropOffPointId: currentCoach.endPoint.id, departureDate: date, returnDate: 22222, userId: 20}
+        console.log(sss)
         const res = await apiOrderCoach(sss)
     }
 

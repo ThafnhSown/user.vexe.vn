@@ -5,7 +5,7 @@ const Banner = () => {
     return (
         <div className='flex items-center flex-row justify-center relative'>
             <div className='flex items-center flex-col relative' style={{backgroundColor:'#f3f3f3'}}>
-                <img src={banner} className='w-max h-auto z-0'/>
+                <img src={banner} className='max-w-full'/>
             </div>
             <FindCoach />
         </div>
