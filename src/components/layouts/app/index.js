@@ -1,6 +1,7 @@
+import { Copyright } from "../../../assets/svgs"
 import AdminHeader from "../components/AdminHeader"
 import Banner from "../components/Banner"
-
+import { CopyrightOutlined } from '@ant-design/icons'
 function AppLayout({ children }) {
   return (
     <div>
@@ -22,6 +23,11 @@ function AppLayout({ children }) {
         </div>
         <div className='min-h-screen col-span-1'></div>
       </div>
+      <footer className="bg-green flex justify-center">
+        <div className="text-white">
+          Bản quyền <CopyrightOutlined /> 2023 thuộc về vexe.vn
+        </div>
+      </footer>
     </div>
     <div className="desktop:hidden">
       <div>
