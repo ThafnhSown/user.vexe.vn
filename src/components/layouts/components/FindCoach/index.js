@@ -6,7 +6,9 @@ import { requestFindCoach, requestLoadOption, requestLoadCompany } from '../../.
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate } from 'react-router-dom'
 import dayjs from 'dayjs'
+import moment from 'moment'
 import './style.css'
+
 
 const FindCoach = () => {
     const dispatch = useAppDispatch()
@@ -19,9 +21,7 @@ const FindCoach = () => {
     const displayRender = (labels) => labels[labels.length - 1];
     useEffect(() => {
         dispatch(requestLoadCompany())
-        if(!options.length) {
-            dispatch(requestLoadOption())
-        }
+        dispatch(requestLoadOption())
     }, [])
   
     const handleFindCoach = async () => {
@@ -38,6 +38,12 @@ const FindCoach = () => {
         }
     }
 
+    const disabledDate = current => {
+        // Disable dates before today
+        return current && current <= moment().startOf('day');
+      };
+      
+
     return (
         <div className='space-y-2 w-3/4 absolute mobile:-bottom-36 desktop:-bottom-10 desktop:h-20 rounded-full z-10'>
         <Card className='flex items-center justify-center mobile:w-80 desktop:w-full'>
@@ -45,7 +51,7 @@ const FindCoach = () => {
                     <Cascader showSearch={true} size='large' suffixIcon={<EnvironmentFilled style={{color: "blue"}}/>} options={options} placeholder="Nhập điểm đón" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => value ? setPickPoint(value[1]) : null}/>
                     <RetweetOutlined />
                     <Cascader showSearch={true} size='large' suffixIcon={<EnvironmentFilled style={{color: "red"}}/>} options={options} placeholder="Nhập điểm dừng" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => value ? setDropPoint(value[1]) : null}/>
-                    <DatePicker size='large' onChange={value => setStartTime(dayjs(value).startOf('day').valueOf())} placeholder='Chọn ngày đi'/>
+                    <DatePicker disabledDate={disabledDate} size='large' onChange={value => setStartTime(dayjs(value).startOf('day').valueOf())} placeholder='Chọn ngày đi'/>
                     {/* <DatePicker onChange={value => setEndTime(new Date(value).valueOf())} placeholder='Chọn ngày về'/> */}
                     {/* <Col>
                         <p>Khứ hồi</p>
