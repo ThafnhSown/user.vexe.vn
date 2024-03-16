@@ -39,8 +39,8 @@ const FindCoach = () => {
     }
 
     const disabledDate = current => {
-        // Disable dates before today
-        return current && current <= moment().startOf('day');
+        const fifteenDaysFromNow = moment().add(15, 'days');
+        return current && current <= moment().startOf('day') || current > fifteenDaysFromNow.endOf('day');;
       };
       
 
