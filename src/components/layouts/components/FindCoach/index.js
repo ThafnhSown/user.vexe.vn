@@ -62,7 +62,7 @@ const FindCoach = () => {
                     <Cascader className='w-full border-none' suffixIcon={<EnvironmentFilled style={{color: "blue"}}/>} options={options} placeholder="Nhập điểm đón" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => setPickPoint(value[1])}/>
                     {/* <RetweetOutlined /> */}
                     <Cascader className='w-full border-none' suffixIcon={<EnvironmentFilled style={{color: "red"}}/>} options={options} placeholder="Nhập điểm dừng" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => setDropPoint(value[1])}/>
-                    <DatePicker className='w-full border-none' onChange={value => setStartTime(new Date(value).valueOf())} placeholder='Chọn ngày đi'/>
+                    <DatePicker disabledDate={disabledDate} className='w-full border-none' onChange={value => setStartTime(new Date(value).valueOf())} placeholder='Chọn ngày đi'/>
                 </Col>
         </Card>
             <div  className='flex items-center justify-center'>
