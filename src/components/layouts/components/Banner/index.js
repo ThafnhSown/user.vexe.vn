@@ -1,4 +1,4 @@
-import banner from '../../../../assets/banner.png'
+import banner from '../../../../../public/banner.png'
 import FindCoach from '../FindCoach'
 import { useAppSelector } from '../../../../redux/hook'
 import { Carousel } from 'antd'
@@ -8,9 +8,6 @@ const Banner = () => {
 
     return (
         <div className='flex items-center flex-row justify-center relative'>
-            {
-                console.log("sss", listMainBanner)
-            }
             <div className='flex items-center flex-col relative' style={{backgroundColor:'#f3f3f3'}}>
                 {
                     listMainBanner.length ? <Carousel autoplay>
