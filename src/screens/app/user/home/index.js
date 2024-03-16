@@ -17,20 +17,11 @@ const { Title } = Typography
 const Home = () => {
     const dispatch = useAppDispatch()
     const listNews = useAppSelector(state => state.userState.newsFeed)
-    const listMainBanner = useAppSelector(state => state.newsState.mainBanner)
     const listSubBanner = useAppSelector(state => state.newsState.subBanner)
-    const items = [{
-        id:1, url: news
-    },
-    {
-        id:2, url: banner
-    }
 
-    ]
     useEffect(() => {
         dispatch(requestLoadNewsFeed())
         dispatch(requestLoadSubBanner(1))
-        dispatch(requestLoadMainBanner(0))
     }, [])
 
     return (

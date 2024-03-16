@@ -1,10 +1,17 @@
 import banner from '../../../../../public/banner.png'
 import FindCoach from '../FindCoach'
-import { useAppSelector } from '../../../../redux/hook'
+import { useAppSelector, useAppDispatch } from '../../../../redux/hook'
 import { Carousel } from 'antd'
+import { useEffect } from 'react'
+import { requestLoadMainBanner } from '../../../../redux/slices/newsSlice'
 
 const Banner = () => {
+    const dispatch = useAppDispatch()
     const listMainBanner = useAppSelector(state => state.newsState.mainBanner)
+
+    useEffect(() => {
+        dispatch(requestLoadMainBanner(0))
+    }, [])
 
     return (
         <div className='flex items-center flex-row justify-center relative'>
