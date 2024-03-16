@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apiCreateMediaContent, apiGetListNews, apiGetMediaContent } from "../../api/services";
 
 const initialState = {
-    mapMainBanner: {},
-    mapSubBanner: {},
+    mainBanner: [],
+    subBanner: [],
     currentNews: {},
     listNews: []
 };
@@ -58,9 +58,7 @@ export const newsSlice = createSlice({
         })
         builder.addCase(requestLoadMainBanner.fulfilled, (state,action) => {
             state.loading = false;
-            action.payload.map(e => {
-                state.mapMainBanner[e.id] = e
-            })
+            state.mainBanner = action.payload
         })
         builder.addCase(requestLoadSubBanner.pending, (state) => {
             state.loading = true;

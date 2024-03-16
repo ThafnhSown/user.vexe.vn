@@ -1,15 +1,15 @@
 import { Card } from 'antd'
 import news from '../../../../../assets/news.png'
 
-const NewsCard = () => {
+const NewsCard = ({news}) => {
     return (
-        <div>
-            <div>
-                <img src={news}/>
-                <h1 className='font-bold truncate'>Nhận ưu đãi 400K khi đăng ký</h1>
-                <p>Nhận ưu đãi 400K khi đăng ký mở thẻ tín dụng BIDV đọc quyền hệ thống vexe.vn</p>
+        <div className='mobile:w-full desktop:w-1/4'>
+            <div className='flex flex-col'>
+                <img src={news.imageUrl}/>
+                <h1 className='font-bold truncate mobile:text-lg desktop:text-md'>{news.title}</h1>
+                <p className="line-clamp-4">{news.content}</p>
 
-                <p className='mt-3'>Th5, 12/10/2023</p>
+                {/* <p className='mt-3'>Th5, 12/10/2023</p> */}
             </div>
         </div>
     )

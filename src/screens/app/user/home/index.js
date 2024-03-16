@@ -9,12 +9,16 @@ import { useAppDispatch, useAppSelector } from '../../../../redux/hook'
 import { useEffect } from 'react'
 import { requestLoadNewsFeed } from '../../../../redux/slices/userSlice'
 import NewsCard from '../components/NewsCard'
+import { requestLoadMainBanner, requestLoadSubBanner } from '../../../../redux/slices/newsSlice'
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const { Title } = Typography
 
 const Home = () => {
     const dispatch = useAppDispatch()
     const listNews = useAppSelector(state => state.userState.newsFeed)
+    const listMainBanner = useAppSelector(state => state.newsState.mainBanner)
+    const listSubBanner = useAppSelector(state => state.newsState.subBanner)
     const items = [{
         id:1, url: news
     },
@@ -25,37 +29,52 @@ const Home = () => {
     ]
     useEffect(() => {
         dispatch(requestLoadNewsFeed())
+        dispatch(requestLoadSubBanner(1))
+        dispatch(requestLoadMainBanner(0))
     }, [])
 
     return (
         <div className='flex flex-col'>
+            {
+                console.log(listSubBanner)
+            }
                 <div className='flex mobile:hidden desktop:flex space-x-4'>
-                    <img className='w-1/3 rounded-lg' src={banner}/>
-                    <img className='w-1/3 rounded-lg' src={banner}/>
-                    <img className='w-1/3 rounded-lg' src={banner}/>
+                {
+                    listSubBanner.map(banner => <div className='w-1/3'>
+                        <img className='rounded-lg' src={banner.imageUrl}/>
+                    </div>)
+                }
                 </div>
                 <div className='mobile:flex mobile:flex-col justify-center desktop:hidden'>
                     <Carousel autoplay className=''>
-                        <div>
-                            <img className='w-3/4 rounded-lg' src={banner}/>
-                        </div>
-                        <div className=''>
-                            <img className='w-3/4 rounded-lg' src={banner}/>
-                        </div>
-                        <div className=''>
-                            <img className='w-3/4 rounded-lg' src={banner}/>
-                        </div>
+                        {
+                            listSubBanner.map(banner => <div>
+                                <img className='rounded-lg' src={banner.imageUrl}/>
+                            </div>)
+                        }
                     </Carousel>
                 </div>
                
             <div className='mt-8 mb-8'>
-                <Title level={3} style={{color:"#006D38"}}>ĐIỂM ĐẾN PHỔ BIẾN</Title>
-                <div className='flex mobile:flex-col desktop:flex-row space-x-8 items-center'>
-                    <NewsCard />
-                    <NewsCard />
-                    <NewsCard />
-                    <NewsCard />
+                <Title level={3} style={{color:"#006D38"}} className='mobile:hidden desktop:flex'>ĐIỂM ĐẾN PHỔ BIẾN</Title>
+                <div className='flex mobile:hidden desktop:flex flex-row space-x-8 items-center'>
+                    {
+                        listNews.map((news, index) => index < 4 ? <NewsCard news={news}/> : null)
+                    }
                 </div>
+                <Title level={4} style={{color:"#006D38"}} className='mobile:flex desktop:hidden ml-8'>ĐIỂM ĐẾN PHỔ BIẾN</Title>
+                <div className='grid grid-cols-12 flex-row desktop:hidden'>
+                    <div className='col-span-1'></div>
+                    <div className='col-span-10 flex flex-col justify-center'>
+                        <Carousel autoplay>
+                            {
+                                listNews.map((news, index) => index < 4 ? <NewsCard news={news}/> : null)
+                            }
+                        </Carousel>
+                    </div>
+                    <div className='col-span-1'></div>
+                </div>
+              
             </div>
             
             <div className='flex flex-col justify-center items-center'>

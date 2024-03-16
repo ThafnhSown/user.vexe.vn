@@ -34,7 +34,13 @@ function AppLayout({ children }) {
         <AdminHeader />
       </div>
         <Banner/>
+        
       <div className="mt-44 bg-neutral">{children}</div>
+      <footer className="bg-green flex justify-center">
+        <div className="text-white">
+          Bản quyền <CopyrightOutlined /> 2023 thuộc về vexe.vn
+        </div>
+      </footer>
     </div>
     </div>
     
