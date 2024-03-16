@@ -39,6 +39,10 @@ export const apiGetListDistrict = async (p) => {
     return ApiConfig(`${EndPoint.LIST_DISTRICT}?provinceId=${p}`, undefined, "GET")
 }
 
+export const apiGetPointList = async () => {
+    return ApiConfig("/global/get-point-list", undefined, "GET")
+}
+
 export const apiGetLocation = async (p) => {
     return ApiConfig(`/global/get-location?locationId=${p}`, undefined, "GET")
 }

@@ -39,9 +39,9 @@ const FindCoach = () => {
     }
 
     return (
-        <div className='space-y-2 absolute mobile:-bottom-36 desktop:-bottom-10 desktop:h-20 rounded-full z-10'>
+        <div className='space-y-2 w-3/4 absolute mobile:-bottom-36 desktop:-bottom-10 desktop:h-20 rounded-full z-10'>
         <Card className='flex items-center justify-center mobile:w-80 desktop:w-full'>
-                <Row className='flex flex-row items-center space-x-1 mobile:hidden desktop:flex'>
+                <Row className='flex flex-row w-full items-center space-x-1 mobile:hidden desktop:flex'>
                     <Cascader showSearch={true} size='large' suffixIcon={<EnvironmentFilled style={{color: "blue"}}/>} options={options} placeholder="Nhập điểm đón" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => value ? setPickPoint(value[1]) : null}/>
                     <RetweetOutlined />
                     <Cascader showSearch={true} size='large' suffixIcon={<EnvironmentFilled style={{color: "red"}}/>} options={options} placeholder="Nhập điểm dừng" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => value ? setDropPoint(value[1]) : null}/>

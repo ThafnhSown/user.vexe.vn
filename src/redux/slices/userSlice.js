@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { apiFindCoach, apiGetListCompanyGb, apiGetListDistrict, apiGetListNews, apiGetListProvince, apiLogin } from "../../api/services";
+import { apiFindCoach, apiGetListCompanyGb, apiGetListDistrict, apiGetListNews, apiGetListProvince, apiGetPointList, apiLogin } from "../../api/services";
 
 const initialState = {
     result: [],
@@ -14,27 +14,18 @@ export const requestFindCoach = createAsyncThunk("/global/find-coach", async (pr
     return res.data
 })
 
-const loadDistrict = async (value) => {
-  const res = await apiGetListDistrict(value)
-  return res.data.data.map(d => ({
-    value: d.id,
-    label: d.district
-}))
-}
-
-export const requestLoadOption = createAsyncThunk("/global/options", async () => {
-    const res = await apiGetListProvince()
-    const listP = res.data.data.map((p) => ({
-      value: p.id,
-      label: p.province
+export const requestLoadOption = createAsyncThunk("/global/list-point", async() => {
+  const res = await apiGetPointList()
+  const options = res.data.data.map((tmp) => ({
+    value: tmp.province.provinceId,
+    label: tmp.province.province,
+    children: tmp.districtList.map(d => ({
+      value: d.districtId,
+      label: d.district
+    }))
   }))
 
-  const tmp = await Promise.all(listP.map(async (p) => ({
-    ...p,
-    children: await loadDistrict(p.value)
-  })))
-
-  return tmp
+  return options
 })
 
 export const requestLoadCompany = createAsyncThunk("/global/get-list-company", async () => {
