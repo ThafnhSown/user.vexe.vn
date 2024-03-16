@@ -1,4 +1,4 @@
-import banner from '../../../../../public/banner.png'
+import banner from '../../../../assets/banner.png'
 import FindCoach from '../FindCoach'
 import { useAppSelector, useAppDispatch } from '../../../../redux/hook'
 import { Carousel } from 'antd'

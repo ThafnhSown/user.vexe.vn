@@ -26,21 +26,18 @@ const Home = () => {
 
     return (
         <div className='flex flex-col'>
-            {
-                console.log(listSubBanner)
-            }
-                <div className='flex mobile:hidden desktop:flex space-x-4'>
+                <div className='flex mobile:hidden desktop:flex space-x-6'>
                 {
-                    listSubBanner.map(banner => <div className='w-1/3'>
-                        <img className='rounded-lg' src={banner.imageUrl}/>
+                    listSubBanner.map(banner => <div className='w-1/3 overflow-hidden h-36'>
+                        <img className='rounded-lg object-cover h-full w-full' src={banner.imageUrl}/>
                     </div>)
                 }
                 </div>
                 <div className='mobile:flex mobile:flex-col justify-center desktop:hidden'>
                     <Carousel autoplay className=''>
                         {
-                            listSubBanner.map(banner => <div>
-                                <img className='rounded-lg' src={banner.imageUrl}/>
+                            listSubBanner.map(banner => <div className='overflow-hidden h-36'>
+                                <img className='rounded-lg object-cover h-full w-full' src={banner.imageUrl}/>
                             </div>)
                         }
                     </Carousel>
