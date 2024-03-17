@@ -13,12 +13,18 @@ const ModalOrder = (props) => {
     const { currentCoach, setCurrentCoach, modalShow, setModalShow } = props
     const [form] = Form.useForm()
 
-    console.log("son", currentCoach)
+    useEffect(() => {
+        form.setFieldValue("quantity", 1)
+    }, [])
 
     const orderCoach = async () => {
         const data = form.getFieldsValue()
         const sss = {...data, timeslotId: currentCoach.timeslotId, pickUpPointId: currentCoach.startPoint.location.id, dropOffPointId: currentCoach.endPoint.location.id, departureDate: date, returnDate: 22222, userId: 20}
-        const res = await apiOrderCoach(sss)
+        console.log(sss)
+        // const res = await apiOrderCoach(sss)
+        // if(res.data.error == 0) {
+        //     setModalShow(false)
+        // }
     }
 
     return (
@@ -82,7 +88,7 @@ const ModalOrder = (props) => {
                 <Col span={12}>
                     <label>Số lượng vé</label>
                     <Form.Item name="quantity" rules={[{ required: true, message: 'Please input your username!' }]}>
-                        <Input type='number' defaultValue={1} onChange={(e) => setNumberTicket(e.target.value)}/>
+                        <Input type='number' defaultValue={numberTicket} onChange={(e) => setNumberTicket(e.target.value)}/>
                     </Form.Item>
                 </Col>
             </Row>
