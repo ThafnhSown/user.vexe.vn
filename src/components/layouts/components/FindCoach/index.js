@@ -1,5 +1,6 @@
 import { Button, Row, Card, DatePicker, Switch, Col, Cascader } from 'antd'
 import { RetweetOutlined, EnvironmentFilled } from '@ant-design/icons'
+import { BluePoint, RedPoint, Swap } from '../../../../assets/svgs'
 import { useState, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hook'
 import { requestFindCoach, requestLoadOption, requestLoadCompany } from '../../../../redux/slices/userSlice'
@@ -48,9 +49,18 @@ const FindCoach = () => {
         <div className='space-y-2 w-3/4 absolute mobile:-bottom-36 desktop:-bottom-10 desktop:h-20 rounded-full z-10'>
         <Card className='flex items-center justify-center mobile:w-80 desktop:w-full'>
                 <Row className='flex flex-row w-full items-center space-x-1 mobile:hidden desktop:flex'>
-                    <Cascader showSearch={true} size='large' suffixIcon={<EnvironmentFilled style={{color: "blue"}}/>} options={options} placeholder="Nhập điểm đón" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => value ? setPickPoint(value[1]) : null}/>
-                    <RetweetOutlined />
-                    <Cascader showSearch={true} size='large' suffixIcon={<EnvironmentFilled style={{color: "red"}}/>} options={options} placeholder="Nhập điểm dừng" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => value ? setDropPoint(value[1]) : null}/>
+                    <Cascader showSearch={true} size='large' suffixIcon={<BluePoint />} options={options} placeholder="Nhập điểm đón" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => value ? setPickPoint(value[1]) : null}/>
+                    <div onClick={() => {
+                        console.log("first", pickPoint, dropPoint)
+                        let tmp = dropPoint
+                        setDropPoint(pickPoint)
+                        setPickPoint(tmp)
+                        console.log("after", pickPoint, dropPoint)
+                    }}>
+                    <Swap />
+                    </div>
+                    
+                    <Cascader showSearch={true} size='large' suffixIcon={<RedPoint />} options={options} placeholder="Nhập điểm dừng" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => value ? setDropPoint(value[1]) : null}/>
                     <DatePicker disabledDate={disabledDate} size='large' onChange={value => setStartTime(dayjs(value).startOf('day').valueOf())} placeholder='Chọn ngày đi'/>
                     {/* <DatePicker onChange={value => setEndTime(new Date(value).valueOf())} placeholder='Chọn ngày về'/> */}
                     {/* <Col>
@@ -59,9 +69,9 @@ const FindCoach = () => {
                     </Col> */}
                 </Row>
                 <Col className='desktop:hidden'>
-                    <Cascader className='w-full border-none' suffixIcon={<EnvironmentFilled style={{color: "blue"}}/>} options={options} placeholder="Nhập điểm đón" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => setPickPoint(value[1])}/>
+                    <Cascader className='w-full border-none' suffixIcon={<BluePoint />} options={options} placeholder="Nhập điểm đón" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => setPickPoint(value[1])}/>
                     {/* <RetweetOutlined /> */}
-                    <Cascader className='w-full border-none' suffixIcon={<EnvironmentFilled style={{color: "red"}}/>} options={options} placeholder="Nhập điểm dừng" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => setDropPoint(value[1])}/>
+                    <Cascader className='w-full border-none' suffixIcon={<RedPoint />} options={options} placeholder="Nhập điểm dừng" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => setDropPoint(value[1])}/>
                     <DatePicker disabledDate={disabledDate} className='w-full border-none' onChange={value => setStartTime(new Date(value).valueOf())} placeholder='Chọn ngày đi'/>
                 </Col>
         </Card>

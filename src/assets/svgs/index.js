@@ -34,3 +34,30 @@ export const Copyright = () => {
 </svg>
 
 }
+
+export const BluePoint = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.0002 25.6667C20.4168 25.6667 25.6668 20.4167 25.6668 14C25.6668 7.58337 20.4168 2.33337 14.0002 2.33337C7.5835 2.33337 2.3335 7.58337 2.3335 14C2.3335 20.4167 7.5835 25.6667 14.0002 25.6667Z" fill="#2D80E9" stroke="#2D80E9" stroke-width="1.5" stroke-miterlimit="10"/>
+<path d="M15.7502 9.33337C12.2152 9.33337 9.3335 12.2267 9.3335 15.75C9.3335 17.3484 10.6402 18.6667 12.2502 18.6667C15.7735 18.6667 18.6668 15.7734 18.6668 12.25C18.6668 10.6517 17.3485 9.33337 15.7502 9.33337Z" fill="white"/>
+</svg>
+
+)
+
+export const RedPoint = () => (
+  <svg width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.72316 9.90504C7.02149 -0.19829 21.9898 -0.186623 24.2765 9.91671C25.6182 15.8434 21.9315 20.86 18.6998 23.9634C16.3548 26.2267 12.6448 26.2267 10.2882 23.9634C7.06816 20.86 3.38149 15.8317 4.72316 9.90504Z" fill="#FF3333" stroke="#FF3333" stroke-width="1.5"/>
+<path d="M14.4999 15.6683C16.5102 15.6683 18.1399 14.0386 18.1399 12.0283C18.1399 10.018 16.5102 8.38831 14.4999 8.38831C12.4895 8.38831 10.8599 10.018 10.8599 12.0283C10.8599 14.0386 12.4895 15.6683 14.4999 15.6683Z" fill="white" stroke="white" stroke-width="1.5"/>
+</svg>
+
+)
+
+export const Swap = () => (
+  <svg width="37" height="36" viewBox="0 0 37 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.5 33C26.7843 33 33.5 26.2843 33.5 18C33.5 9.71573 26.7843 3 18.5 3C10.2157 3 3.5 9.71573 3.5 18C3.5 26.2843 10.2157 33 18.5 33Z" fill="#D6D6D6" stroke="#D6D6D6" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.75 12.51H22.85C24.185 12.51 25.25 13.59 25.25 14.91V17.565" stroke="#006D38" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M14.285 9.98999L11.75 12.5101L14.285 15.0451" stroke="#006D38" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M25.25 23.4901H14.15C12.815 23.4901 11.75 22.4101 11.75 21.0901V18.4351" stroke="#006D38" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22.7148 26.01L25.2498 23.49L22.7148 20.955" stroke="#006D38" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+)
