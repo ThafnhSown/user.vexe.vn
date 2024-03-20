@@ -98,7 +98,7 @@ const FindCoach = () => {
                 </div>
  
             <div  className='mobile:h-12 desktop:hidden flex items-center justify-center'>
-                <Button onClick={() => handleFindCoach()} className='text-xl font-extrabold h-12 w-full'>Tìm kiếm</Button>
+                <Button onClick={() => handleFindCoach()} className='text-xl font-extrabold h-12 w-full'>Tìm xe</Button>
             </div>
         </div>
 
