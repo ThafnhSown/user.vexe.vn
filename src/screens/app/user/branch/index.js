@@ -1,7 +1,7 @@
 const Branch = () => {
     return (
         <div>
-            sonidabezt - Branch
+            Hãng xe đăng ký
         </div>
     )
 }

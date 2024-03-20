@@ -5,3 +5,35 @@
 .ant-select-single.ant-select-lg .ant-select-selector {
     border-radius: 0px;
 }
+
+.ant-select-selector {
+    border-radius: 0px;
+}
+
+.point-input .ant-select, .ant-picker {
+    width: 100%;
+}
+.point-input .ant-picker {
+    border: none;
+}
+
+.point-input .ant-select .ant-select-selector {
+    border: none;
+}
+
+.ant-select-selector {
+    border: none;
+}
+
+.mobile-fc .ant-select .ant-select-selector {
+    border: none;
+}
+
+.mobile-fc .ant-picker {
+    border: none;
+    width: 75%;
+}
+
+.mobile-fc .ant-cascader {
+    width: 75%;
+}

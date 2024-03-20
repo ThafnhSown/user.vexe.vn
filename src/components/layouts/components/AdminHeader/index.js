@@ -45,32 +45,27 @@ function AdminHeader() {
           <div className='flex flex-row items-center col-span-2 w-full'>
             <img src={logo}/>
           </div>
-          <div className='col-span-5'/>
-          <div className='flex flex-row items-center col-span-5'>
+          <div className='col-span-6'/>
+          <div className='flex flex-row items-center col-span-4'>
             <Link to="/" className='focus:text-green font-bold text-lg px-6'>
                 Trang chủ
             </Link>
             <Link to="/hang-xe" className='focus:text-green font-bold text-lg px-6'>
                 Hãng xe đăng ký
             </Link>
-            <Link to="/tin-tuc" className='focus:text-green font-bold text-lg px-6'>
-                Tin tức
-            </Link>
           </div>
       </div>
       <div className='desktop:hidden'>
-        <div className='bg-background h-20 flex items-center space-x-28'>
+        <div className='bg-white h-20 flex items-center space-x-28'>
             <div className='flex justify-start ml-4'>
             <Dropdown menu={{items}}>
-              <MenuOutlined style={{color: 'white', size:'40px'}}/>
+              <MenuOutlined style={{color: 'black', size:'40px'}}/>
             </Dropdown >
             </div>
-            
-            <img src={whiteLogo}/>
+            <img src={logo}/>
         </div>
       </div>
     </div>
-      
   )
 }
 

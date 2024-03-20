@@ -61,3 +61,18 @@ export const Swap = () => (
 </svg>
 
 )
+
+export const Calendar = () => (
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.3335 2.33337V5.83337" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.6665 2.33337V5.83337" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.0835 10.605H23.9168" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 9.91671V19.8334C24.5 23.3334 22.75 25.6667 18.6667 25.6667H9.33333C5.25 25.6667 3.5 23.3334 3.5 19.8334V9.91671C3.5 6.41671 5.25 4.08337 9.33333 4.08337H18.6667C22.75 4.08337 24.5 6.41671 24.5 9.91671Z" stroke="#292D32" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.3103 15.9834H18.3208" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M18.3103 19.4834H18.3208" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.9949 15.9834H14.0054" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M13.9949 19.4834H14.0054" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9.67653 15.9834H9.68701" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9.67653 19.4834H9.68701" stroke="#292D32" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+)

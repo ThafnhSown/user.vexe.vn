@@ -1,6 +1,6 @@
 import { Card, Button, Typography, Row, Col} from 'antd'
 import { PhoneFilled, ClockCircleFilled, EnvironmentFilled } from '@ant-design/icons'
-import { IconCar, IconTP } from '../../../../../assets/svgs/index'
+import { BluePoint, IconCar, IconTP, RedPoint } from '../../../../../assets/svgs/index'
 import convert from '../../../../../utils/convert'
 const { Title } = Typography
 import dayjs from 'dayjs'
@@ -21,8 +21,8 @@ const CardCoach = (props) => {
             </Col>
             </Row>
         </div>}
-        extra={<a onClick={() => console.log("sonidabezt")} className='text-green-700'>Thông tin</a>}
-        className='mobile:hidden desktop:block'
+        extra={<a className='text-green-700'>Thông tin</a>}
+        className='mobile:hidden desktop:block p-3'
         >
             <div className='flex flex-row'>
                 <div className='w-3/4'>
@@ -36,13 +36,13 @@ const CardCoach = (props) => {
                         </Col>
                     </Row>
                     <Row>
-                        <Row className='mx-2 space-x-2 flex flex-row items-center'><IconTP /><p>Lộ trình: {coach.travelPath.detail}</p></Row>
+                        <Row className='mx-2 space-x-2 flex flex-row items-center truncate'><IconTP /><p>Lộ trình: {coach.travelPath.detail}</p></Row>
                     </Row>
                     <Row className='mx-2 space-x-2 flex flex-row items-center'>
-                        <p><EnvironmentFilled style={{color: "blue"}}/> {coach.startPoint.location.district} = Trung chuyển đón {convert(coach.startPoint)} </p>
+                        <p><BluePoint/> {coach.startPoint.location.district} = Trung chuyển đón {convert(coach.startPoint)} </p>
                     </Row>
                     <Row className='mx-2 space-x-2 flex flex-row items-center'>
-                        <p><EnvironmentFilled style={{color: "red"}}/> {coach.endPoint.location.district} = Trung chuyển trả {convert(coach.endPoint)}</p>
+                        <p><RedPoint /> {coach.endPoint.location.district} = Trung chuyển trả {convert(coach.endPoint)}</p>
                     </Row>
                 </div>
 
@@ -76,7 +76,7 @@ const CardCoach = (props) => {
             </Col>
             </Row>
         </div>}
-        extra={<a onClick={() => console.log("sonidabezt")} className='text-green-700'>Thông tin</a>}
+        extra={<a className='text-green-700'>Thông tin</a>}
         >
             <div className='flex flex-col'>
                 <div className=''>
@@ -87,7 +87,7 @@ const CardCoach = (props) => {
                     </div>
                     <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleFilled /><p className="text-xs font-bold"> Xuất bến: {coach.startPoint.location.district} - {coach.endPoint.location.district}</p></Row>
                     <Row>
-                        <Row className='mx-2 space-x-2 flex flex-row items-center'><IconTP /><p>Lộ trình: {coach.travelPath.detail}</p></Row>
+                        <Row className='mx-2 space-x-2 flex flex-row items-center truncate'><IconTP /><p>Lộ trình: {coach.travelPath.detail}</p></Row>
                     </Row>
                     <Row className='mx-2 space-x-2 flex flex-row items-center'>
                         <p><EnvironmentFilled style={{color: "blue"}}/> {coach.startPoint.location.district} = Trung chuyển đón </p>

@@ -16,7 +16,7 @@ function AppLayout({ children }) {
         <Banner />
       </div>
       
-      <div className='grid grid-cols-12 mt-32 bg-neutral'>
+      <div className='grid grid-cols-12 mt-4 bg-neutral'>
         <div className='min-h-screen col-span-1'></div>
         <div className='min-h-screen col-span-10'>
           <div className='p-8 h-[calc(100%_-_64px)] bg-neutral'>{children}</div>
@@ -25,7 +25,7 @@ function AppLayout({ children }) {
       </div>
       <footer className="bg-green flex justify-center">
         <div className="text-white">
-          Bản quyền <CopyrightOutlined /> 2023 thuộc về vexe.vn
+          Bản quyền <CopyrightOutlined /> 2024 thuộc về vexe.vn
         </div>
       </footer>
     </div>
@@ -35,10 +35,10 @@ function AppLayout({ children }) {
       </div>
         <Banner/>
         
-      <div className="mt-44 bg-neutral">{children}</div>
+      <div className="mt-48 mx-4 bg-neutral">{children}</div>
       <footer className="bg-green flex justify-center">
         <div className="text-white">
-          Bản quyền <CopyrightOutlined /> 2023 thuộc về vexe.vn
+          Bản quyền <CopyrightOutlined /> 2024 thuộc về vexe.vn
         </div>
       </footer>
     </div>
