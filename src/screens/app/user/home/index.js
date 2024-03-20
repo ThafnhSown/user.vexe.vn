@@ -2,15 +2,11 @@ import { Carousel, Typography } from 'antd'
 import datve from '../../../../assets/dat-ve.png'
 import dichvu from '../../../../assets/dich-vu.png'
 import phucvu from '../../../../assets/phuc-vu.png'
-import banner from '../../../../assets/banner.png'
-import news from '../../../../assets/news.png'
-import whiteLogo from '../../../../assets/white-logo.png'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hook'
 import { useEffect } from 'react'
 import { requestLoadNewsFeed } from '../../../../redux/slices/userSlice'
 import NewsCard from '../components/NewsCard'
-import { requestLoadMainBanner, requestLoadSubBanner } from '../../../../redux/slices/newsSlice'
-import InfiniteScroll from 'react-infinite-scroll-component';
+import { requestLoadSubBanner } from '../../../../redux/slices/newsSlice'
 
 const { Title } = Typography
 
@@ -34,7 +30,7 @@ const Home = () => {
                 }
                 </div>
                 <div className='mobile:flex mobile:flex-col justify-center desktop:hidden'>
-                    <Carousel autoplay className=''>
+                    <Carousel autoplay className='space-x-1'>
                         {
                             listSubBanner.map(banner => <div className='overflow-hidden h-36'>
                                 <img className='rounded-lg object-cover h-full w-full' src={banner.imageUrl}/>
@@ -43,7 +39,7 @@ const Home = () => {
                     </Carousel>
                 </div>
                
-            <div className='mt-8 mb-8'>
+            <div className='mt-4 mb-4'>
                 <Title level={3} style={{color:"#006D38"}} className='mobile:hidden desktop:flex'>ĐIỂM ĐẾN PHỔ BIẾN</Title>
                 <div className='flex mobile:hidden desktop:flex flex-row space-x-8 items-center'>
                     {

@@ -2,7 +2,13 @@ import { Copyright } from "../../../assets/svgs"
 import AdminHeader from "../components/AdminHeader"
 import Banner from "../components/Banner"
 import { CopyrightOutlined } from '@ant-design/icons'
+import { useLocation } from "react-router-dom"
+
+
 function AppLayout({ children }) {
+  const location = useLocation()
+  const pathName = location.pathname
+
   return (
     <div>
     <div className='flex-col flex mobile:hidden desktop:flex bg-neutral'>
@@ -35,8 +41,8 @@ function AppLayout({ children }) {
       </div>
         <Banner/>
         
-      <div className="mt-48 mx-4 bg-neutral">{children}</div>
-      <footer className="bg-green flex justify-center">
+      <div className={`${pathName == '/tim-kiem' ? 'mt-8' : 'mt-48'} mx-4 bg-neutral `}>{children}</div>
+      <footer className="bg-green flex justify-center mt-12">
         <div className="text-white">
           Bản quyền <CopyrightOutlined /> 2024 thuộc về vexe.vn
         </div>

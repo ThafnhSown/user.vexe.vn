@@ -36,7 +36,7 @@ const CoachResult = () => {
     }, [])
     
     return (
-        <div className="flex flex-row space-x-8 mobile:space-x-12">
+        <div className="flex flex-row mobile: space-x-0 desktop:space-x-8">
             <div className="w-1/3 space-y-4 mobile:hidden desktop:flex flex-col">
                 <Card>
                     <Title level={4}>Sắp xếp</Title>
@@ -74,7 +74,7 @@ const CoachResult = () => {
                   
                 </Card>
             </div>
-            <div className="w-3/4 space-y-4">
+            <div className="mobile:w-full desktop:w-3/4 space-y-4">
                 {
                     filter ? listRes.map(r => <CardCoach coach={r} currentCoach={currentCoach} setCurrentCoach={setCurrentCoach} modalShow={modalShow} setModalShow={setModalShow}/>) : result.map(r => <CardCoach coach={r} currentCoach={currentCoach} setCurrentCoach={setCurrentCoach} modalShow={modalShow} setModalShow={setModalShow}/>)
                 }

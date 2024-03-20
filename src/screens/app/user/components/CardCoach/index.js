@@ -1,27 +1,28 @@
 import { Card, Button, Typography, Row, Col} from 'antd'
-import { PhoneFilled, ClockCircleFilled, EnvironmentFilled } from '@ant-design/icons'
+import { PhoneFilled, ClockCircleOutlined, EnvironmentFilled } from '@ant-design/icons'
 import { BluePoint, IconCar, IconTP, RedPoint } from '../../../../../assets/svgs/index'
 import convert from '../../../../../utils/convert'
+import { regexNumber } from '../../../../../utils/regex'
 const { Title } = Typography
 import dayjs from 'dayjs'
 
 const CardCoach = (props) => {
     const { coach, setModalShow, setCurrentCoach } = props    
     return (
-        <div>
+        <div className='mobile:w-full'>
         <Card 
         title={<div>
-            <Row>
+            <div className='flex flex-row space-x-3'>
             <Col>
             <img src={coach.coachCompany.logo} className='w-20 h-20' />
             </Col>
-            <Col className='flex flex-col justify-normal items-center'>
+            <div className='flex flex-col justify-normal'>
             <Title className='mt-2' level={4}>{coach.coachCompany.name}</Title>
             <p><PhoneFilled /> Hotline: {coach.coachCompany.hotline}</p>
-            </Col>
-            </Row>
+            </div>
+            </div>
         </div>}
-        extra={<a className='text-green-700'>Thông tin</a>}
+        extra={<a className='text-background'>Thông tin</a>}
         className='mobile:hidden desktop:block p-3'
         >
             <div className='flex flex-row'>
@@ -32,23 +33,29 @@ const CardCoach = (props) => {
                         </Col>
                         <Col>
                             <Row className='mx-2 space-x-2 flex flex-row items-center'><IconCar /><p className="text-base font-bold">{coach.coachTypeName}</p></Row>
-                            <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleFilled /><p className="text-base font-bold"> Xuất bến: {coach.startPoint.location.district} - {coach.endPoint.location.district}</p></Row>
+                            <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-base font-bold"> Xuất bến: {coach.startPoint.location.district} - {coach.endPoint.location.district}</p></Row>
                         </Col>
                     </Row>
-                    <Row>
-                        <Row className='mx-2 space-x-2 flex flex-row items-center truncate'><IconTP /><p>Lộ trình: {coach.travelPath.detail}</p></Row>
-                    </Row>
-                    <Row className='mx-2 space-x-2 flex flex-row items-center'>
-                        <p><BluePoint/> {coach.startPoint.location.district} = Trung chuyển đón {convert(coach.startPoint)} </p>
-                    </Row>
-                    <Row className='mx-2 space-x-2 flex flex-row items-center'>
-                        <p><RedPoint /> {coach.endPoint.location.district} = Trung chuyển trả {convert(coach.endPoint)}</p>
-                    </Row>
+                    <div className='mx-4 space-x-2 flex flex-row items-center truncate'>
+                        <IconTP />
+                        <p className='font-extrabold'>Lộ trình:</p>
+                        <p>{coach.travelPath.detail}</p>
+                    </div>
+                    <div className='mx-2 space-x-2 flex flex-row items-center'>
+                        <BluePoint/> 
+                        <p className='font-extrabold'>{coach.startPoint.location.district}</p>
+                        <p>= Trung chuyển đón {convert(coach.startPoint)} </p>
+                    </div>
+                    <div className='mx-2 space-x-2 flex flex-row items-center'>
+                        <RedPoint />
+                        <p className='font-extrabold'>{coach.endPoint.location.district}</p>
+                        <p>= Trung chuyển trả {convert(coach.endPoint)}</p>
+                    </div>
                 </div>
 
                 <div className='w-1/4'>
                     <div className='flex flex-col justify-end'>
-                    <Title level={3}>{coach.price}đ</Title>
+                    <Title level={3}>{regexNumber(coach.price)}đ</Title>
                     <Button 
                     onClick={() => {
                         setModalShow(true)
@@ -70,13 +77,13 @@ const CardCoach = (props) => {
             <Col>
             <img src={coach.coachCompany.logo} className='w-20 h-20' />
             </Col>
-            <Col className='flex flex-col justify-normal items-center'>
+            <Col className='flex flex-col justify-normal'>
             <Title className='mt-2' level={4}>{coach.coachCompany.name}</Title>
             <p><PhoneFilled /> Hotline: {coach.coachCompany.hotline}</p>
             </Col>
             </Row>
         </div>}
-        extra={<a className='text-green-700'>Thông tin</a>}
+        extra={<a className='text-background'>Thông tin</a>}
         >
             <div className='flex flex-col'>
                 <div className=''>
@@ -85,16 +92,19 @@ const CardCoach = (props) => {
                         <div className='w-1/2 pl-4 mx-2 space-x-2 flex flex-row items-center'><IconCar /><p className="text-base font-bold">{coach.coachTypeName}</p></div>
                        
                     </div>
-                    <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleFilled /><p className="text-xs font-bold"> Xuất bến: {coach.startPoint.location.district} - {coach.endPoint.location.district}</p></Row>
-                    <Row>
-                        <Row className='mx-2 space-x-2 flex flex-row items-center truncate'><IconTP /><p>Lộ trình: {coach.travelPath.detail}</p></Row>
-                    </Row>
-                    <Row className='mx-2 space-x-2 flex flex-row items-center'>
-                        <p><EnvironmentFilled style={{color: "blue"}}/> {coach.startPoint.location.district} = Trung chuyển đón </p>
-                    </Row>
-                    <Row className='mx-2 space-x-2 flex flex-row items-center'>
-                        <p><EnvironmentFilled style={{color: "red"}}/> {coach.endPoint.location.district} = Trung chuyển trả</p>
-                    </Row>
+                    <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-xs font-bold"> Xuất bến: {coach.startPoint.location.district} - {coach.endPoint.location.district}</p></Row>
+                    <div className='mx-2 space-x-2 flex flex-row items-center truncate'>
+                        <IconTP />
+                        <p>Lộ trình: {coach.travelPath.detail}</p>
+                    </div>
+                    <div className='space-x-2 flex flex-row items-center'>
+                        <BluePoint />
+                        <p className='truncate'>{coach.startPoint.location.district} = Trung chuyển đón </p>
+                    </div>
+                    <div className='space-x-2 flex flex-row items-center'>
+                        <RedPoint />
+                        <p className='truncate'>{coach.endPoint.location.district} = Trung chuyển trả</p>
+                    </div>
                 </div>
 
                 <div className=''>

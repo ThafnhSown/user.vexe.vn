@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import { MenuOutlined } from '@ant-design/icons'
 import { Dropdown  } from 'antd'
 import logo from '../../../../assets/logo.png'
-import whiteLogo from '../../../../assets/white-logo.png'
 import { useNavigate } from 'react-router'
 function AdminHeader() {
   const navigate = useNavigate()

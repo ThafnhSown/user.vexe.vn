@@ -1,8 +1,10 @@
 import { Modal, Form, Typography, Input, Col, Row, DatePicker, Button } from "antd"
 import { EnvironmentFilled, ClockCircleFilled, PhoneFilled } from '@ant-design/icons'
 import { useEffect, useState } from "react"
-import { IconCar, IconTP } from '../../../../../assets/svgs/index'
+import { IconCar, IconTP, BluePoint, RedPoint } from '../../../../../assets/svgs/index'
 import dayjs from 'dayjs'
+import { regexNumber } from "../../../../../utils/regex"
+import convert from "../../../../../utils/convert"
 const { Title } = Typography
 import './style.css'
 import { apiOrderCoach } from "../../../../../api/services"
@@ -36,8 +38,8 @@ const ModalOrder = (props) => {
              footer={(_, { OkBtn, CancelBtn }) => (
                 <div className="flex flex-row justify-end space-x-2">
                     <div>
-                        <p>{`Giá vé: ${currentCoach.price}đ`}</p>
-                        <label>Tổng cộng: <a>{currentCoach.price * numberTicket}đ</a></label>
+                        <p>{`Giá vé: ${regexNumber(currentCoach.price)}đ`}</p>
+                        <label>Tổng cộng: <a>{regexNumber(currentCoach.price * numberTicket)}đ</a></label>
                     </div>
                     <Form.Item>
                         <Button type="primary" htmlType="submit" onClick={() => orderCoach()} className="h-12 text-lg">Xác nhận</Button>
@@ -49,11 +51,11 @@ const ModalOrder = (props) => {
             width={800}
         >
             <div>
-                <Row>
+                <Row className="space-x-3">
                     <Col>
                         <img src={currentCoach.coachCompany.logo} className='w-20 h-20' />
                     </Col>
-                    <Col className='flex flex-col justify-normal items-center'>
+                    <Col className='flex flex-col justify-normal'>
                         <Title className='mt-2' level={4}>{currentCoach.coachCompany.name}</Title>
                         <p><PhoneFilled /> Hotline: {currentCoach.coachCompany.hotline}</p>
                     </Col>
@@ -68,15 +70,21 @@ const ModalOrder = (props) => {
                     <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleFilled /><p className="text-base font-bold"> Xuất bến: {currentCoach.startPoint.location.district} - {currentCoach.endPoint.location.district}</p></Row>
                 </Col>
             </Row>
-            <Row>
-                <Row className='mx-2 space-x-2 flex flex-row items-center'><IconTP /> <p>Lộ trình: {currentCoach.travelPath.detail}</p></Row>
-            </Row>
-            <Row className='mx-2 space-x-2 flex flex-row items-center'>
-                <p><EnvironmentFilled style={{color: "blue"}}/> {currentCoach.startPoint.location.district} = Trung chuyển đón</p>
-            </Row>
-            <Row className='mx-2 space-x-2 flex flex-row items-center'>
-                <p><EnvironmentFilled style={{color: "red"}}/> {currentCoach.endPoint.location.district} = Trung chuyển trả</p>
-            </Row>
+            <div className='mx-4 space-x-2 flex flex-row items-center truncate'>
+                        <IconTP />
+                        <p className='font-extrabold'>Lộ trình:</p>
+                        <p>{currentCoach.travelPath.detail}</p>
+                    </div>
+                    <div className='mx-2 space-x-2 flex flex-row items-center'>
+                        <BluePoint/> 
+                        <p className='font-extrabold'>{currentCoach.startPoint.location.district}</p>
+                        <p>= Trung chuyển đón {convert(currentCoach.startPoint)} </p>
+                    </div>
+                    <div className='mx-2 space-x-2 flex flex-row items-center'>
+                        <RedPoint />
+                        <p className='font-extrabold'>{currentCoach.endPoint.location.district}</p>
+                        <p>= Trung chuyển trả {convert(currentCoach.endPoint)}</p>
+                    </div>
             <Title level={4}>Thông tin</Title>
             <Row gutter={[8, 8]}>
                 <Col span={12}>
