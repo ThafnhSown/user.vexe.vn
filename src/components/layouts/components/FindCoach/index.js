@@ -47,7 +47,7 @@ const FindCoach = () => {
       
 
     return (
-        <div className={`space-y-2 mobile:w-11/12 desktop:w-2/3 absolute mobile:-bottom-40 desktop:-bottom-8 desktop:h-20 rounded-full z-10 ${pathName == '/tim-kiem' ? 'mobile:hidden' : ''}`}>
+        <div className={`space-y-2 mobile:w-11/12 desktop:w-2/3 absolute mobile:-bottom-40 desktop:-bottom-8 desktop:h-20 rounded-full z-10 ${pathName == '/tim-kiem' ? 'mobile:hidden desktop:block' : ''}`}>
                 <div className='flex flex-row w-full bg-white rounded-md p-1 items-center justify-center space-x-1 mobile:hidden desktop:flex'>
                     <div className='point-input w-1/4 flex flex-row items-center border border-black'>
                         <BluePoint />
