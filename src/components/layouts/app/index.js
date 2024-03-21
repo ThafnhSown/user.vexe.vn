@@ -25,7 +25,7 @@ function AppLayout({ children }) {
       <div className='grid grid-cols-12 mt-4 bg-neutral'>
         <div className='min-h-screen col-span-1'></div>
         <div className='min-h-screen col-span-10'>
-          <div className='p-8 h-[calc(100%_-_64px)] bg-neutral'>{children}</div>
+          <div className={`${pathName == '/tim-kiem' ? 'mt-16' : ''} p-8 h-[calc(100%_-_64px)] bg-neutral`}>{children}</div>
         </div>
         <div className='min-h-screen col-span-1'></div>
       </div>

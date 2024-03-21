@@ -1,0 +1,11 @@
+.ant-card-head-wrapper {
+    position: absolute;
+    left: 20px;
+    margin-bottom: 4px;
+}
+
+.mobile .ant-card-head-wrapper {
+    position: absolute;
+    left: 0px;
+    margin-bottom: 4px;
+}

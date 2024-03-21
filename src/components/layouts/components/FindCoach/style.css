@@ -37,3 +37,9 @@
 .mobile-fc .ant-cascader {
     width: 75%;
 }
+
+.ant-picker-date-panel {
+    background-color: white;
+    position: absolute;
+    left: -36px;
+}

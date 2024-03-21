@@ -50,7 +50,7 @@ function AdminHeader() {
                 Trang chủ
             </Link>
             <Link to="/hang-xe" className='focus:text-green font-bold text-lg px-6'>
-                Hãng xe đăng ký
+                Trở thành đối tác
             </Link>
           </div>
       </div>

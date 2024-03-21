@@ -8,6 +8,7 @@ import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate, useLocation, useLoaderData } from 'react-router-dom'
 import dayjs from 'dayjs'
 import moment from 'moment'
+import {locale} from '../../../../utils/regex'
 import './style.css'
 
 const FindCoach = () => {
@@ -43,11 +44,10 @@ const FindCoach = () => {
     const disabledDate = current => {
         const fifteenDaysFromNow = moment().add(15, 'days');
         return current && current <= moment().startOf('day') || current > fifteenDaysFromNow.endOf('day');;
-      };
-      
+      };  
 
     return (
-        <div className={`space-y-2 mobile:w-11/12 desktop:w-2/3 absolute mobile:-bottom-40 desktop:-bottom-8 desktop:h-20 rounded-full z-10 ${pathName == '/tim-kiem' ? 'mobile:hidden desktop:block' : ''}`}>
+        <div className={`space-y-2 mobile:w-11/12 desktop:w-2/3 absolute mobile:-bottom-40 desktop:h-20 rounded-full z-10 ${pathName == '/tim-kiem' ? 'mobile:hidden desktop:block desktop:top-8' : 'desktop:bottom-4'}`}>
                 <div className='flex flex-row w-full bg-white rounded-md p-1 items-center justify-center space-x-1 mobile:hidden desktop:flex'>
                     <div className='point-input w-1/4 flex flex-row items-center border border-black'>
                         <BluePoint />
@@ -67,7 +67,7 @@ const FindCoach = () => {
                     </div>
                     <div className='point-input w-1/4 flex flex-row items-center border border-black'>
                         <Calendar />
-                        <DatePicker suffixIcon={<div />} disabledDate={disabledDate} size='large' onChange={value => setStartTime(dayjs(value).startOf('day').valueOf())} placeholder='Chọn ngày đi'/>
+                        <DatePicker locale={locale} suffixIcon={<div />} disabledDate={disabledDate} size='large' onChange={value => setStartTime(dayjs(value).startOf('day').valueOf())} placeholder='Chọn ngày đi'/>
                     </div>
                     <Button onClick={() => handleFindCoach()} className='text-xl font-extrabold mobile:hidden desktop:block rounded-md h-4/5 w-1/5'>Tìm xe</Button>
                     {/* <DatePicker onChange={value => setEndTime(new Date(value).valueOf())} placeholder='Chọn ngày về'/> */}
@@ -94,7 +94,7 @@ const FindCoach = () => {
                     <div class="w-3/4 mt-2 h-1 border-t border-green opacity-20"></div>
                     <div className='flex flex-row w-3/4 my-2'>
                         <Calendar />
-                        <DatePicker suffixIcon={<div />} disabledDate={disabledDate} onChange={value => setStartTime(new Date(value).valueOf())} placeholder='Chọn ngày đi'/>
+                        <DatePicker locale={locale} className='items-center justify-center' suffixIcon={<div />} disabledDate={disabledDate} onChange={value => setStartTime(new Date(value).valueOf())} placeholder='Chọn ngày đi'/>
                     </div>
                 </div>
  
@@ -102,10 +102,6 @@ const FindCoach = () => {
                 <Button onClick={() => handleFindCoach()} className='text-xl font-extrabold h-12 w-full mt-6'>Tìm xe</Button>
             </div>
         </div>
-
-       
-            
-
     )
 }
 
