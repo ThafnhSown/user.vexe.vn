@@ -144,3 +144,7 @@ export const apiGetTravelPathList = async (id) => {
 export const apiFindCoach = async (props) => {
     return ApiConfig(EndPoint.FIND_COACH, props)
 }
+
+export const apiSubmitRequest = async (props) => {
+    return ApiConfig("/global/submit-request", props)
+}

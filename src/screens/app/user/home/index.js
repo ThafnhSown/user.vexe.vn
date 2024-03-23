@@ -29,7 +29,7 @@ const Home = () => {
                     </div>)
                 }
                 </div>
-                <div className='mobile:flex mobile:flex-col justify-center desktop:hidden'>
+                <div className='mobile:flex mobile:flex-col justify-center desktop:hidden bg-white'>
                     <Carousel autoplay className='space-x-1'>
                         {
                             listSubBanner.map(banner => <div className='overflow-hidden h-36'>
@@ -39,8 +39,7 @@ const Home = () => {
                     </Carousel>
                 </div>
                
-            <div className='mt-4 mb-4'>
-                <Title level={3} style={{color:"#006D38"}} className='mobile:hidden desktop:flex'>ĐIỂM ĐẾN PHỔ BIẾN</Title>
+            <div className='mt-4 mb-6'>                <Title level={3} style={{color:"#006D38"}} className='mobile:hidden desktop:flex'>ĐIỂM ĐẾN PHỔ BIẾN</Title>
                 <div className='flex mobile:hidden desktop:flex flex-row space-x-8 items-center'>
                     {
                         listNews.map((news, index) => index < 4 ? <NewsCard news={news}/> : null)
@@ -50,7 +49,7 @@ const Home = () => {
                 <div className='grid grid-cols-12 flex-row desktop:hidden'>
                     <div className='col-span-1'></div>
                     <div className='col-span-10 flex flex-col justify-center'>
-                        <Carousel autoplay>
+                        <Carousel className='news-carousel'>
                             {
                                 listNews.map((news, index) => index < 4 ? <NewsCard news={news}/> : null)
                             }

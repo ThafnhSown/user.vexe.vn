@@ -29,6 +29,23 @@ label a:hover {
 }
 .ant-cascader-select {
     border-radius: 0;
-    /* height: fit-content;
-    font-size: 18px; */
+}
+
+.stick-slider {
+    position: relative;
+}
+
+.news-carousel .slick-dots {
+    position: absolute;
+    top: 215px;
+}
+
+.slick-dots li {
+    border-radius: 10px;
+    background-color: #006D38
+}
+
+.ticket input {
+    margin-left: 4px;
+    width: 5%;
 }

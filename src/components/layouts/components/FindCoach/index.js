@@ -49,7 +49,7 @@ const FindCoach = () => {
     return (
         <div className={`space-y-2 mobile:w-11/12 desktop:w-2/3 absolute mobile:-bottom-40 desktop:h-20 rounded-full z-10 ${pathName == '/tim-kiem' ? 'mobile:hidden desktop:block desktop:top-8' : 'desktop:bottom-4'}`}>
                 <div className='flex flex-row w-full bg-white rounded-md p-1 items-center justify-center space-x-1 mobile:hidden desktop:flex'>
-                    <div className='point-input w-1/4 flex flex-row items-center border border-black'>
+                    <div className='point-input w-1/4 flex flex-row items-center border border-black rounded-md px-1'>
                         <BluePoint />
                         <Cascader showSearch={true} expandIcon={<div />} size='large' options={options} placeholder="Nhập điểm đón" displayRender={displayRender} expandTrigger='hover' onChange={(value) => value ? setPickPoint(value[1]) : null}/>
                     </div>
@@ -61,11 +61,11 @@ const FindCoach = () => {
                     }}>
                     <ArrowRightOutlined />
                     </div>
-                    <div className='point-input w-1/4 flex flex-row items-center border border-black'>
+                    <div className='point-input w-1/4 flex flex-row items-center border border-black rounded-md px-1'>
                         <RedPoint />
                         <Cascader showSearch={true} size='large' options={options} placeholder="Nhập điểm trả" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => value ? setDropPoint(value[1]) : null}/>
                     </div>
-                    <div className='point-input w-1/4 flex flex-row items-center border border-black'>
+                    <div className='point-input w-1/4 flex flex-row items-center border border-black rounded-md px-1'>
                         <Calendar />
                         <DatePicker locale={locale} suffixIcon={<div />} disabledDate={disabledDate} size='large' onChange={value => setStartTime(dayjs(value).startOf('day').valueOf())} placeholder='Chọn ngày đi'/>
                     </div>
@@ -79,7 +79,7 @@ const FindCoach = () => {
                 <div className='flex flex-col justify-center items-center bg-white rounded-md desktop:hidden mobile-fc border border-background'>
                     <div className='flex flex-row w-3/4 mt-2'>
                         <BluePoint />
-                        <Cascader suffixIcon={<div />} options={options} placeholder="Nhập điểm đón" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => setPickPoint(value[1])}/>
+                        <Cascader size='large' suffixIcon={<div />} options={options} placeholder="Nhập điểm đón" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} allowClear={false} onChange={(value) => setPickPoint(value[1])}/>
                     </div>
                     <div className='flex flex-row items-center h-6 w-3/4 ml-4'>
                         <SmallDashOutlined rotate={90}/>
@@ -89,7 +89,7 @@ const FindCoach = () => {
                     
                     <div className='flex flex-row w-3/4'>
                         <RedPoint />
-                        <Cascader suffixIcon={<div />} options={options} placeholder="Nhập điểm trả" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} onChange={(value) => setDropPoint(value[1])}/>
+                        <Cascader popupClassName="test" size='large' suffixIcon={<div />} options={options} placeholder="Nhập điểm trả" displayRender={displayRender} expandTrigger='hover' expandIcon={<div/>} allowClear={false} onChange={(value) => setDropPoint(value[1])}/>
                     </div>
                     <div class="w-3/4 mt-2 h-1 border-t border-green opacity-20"></div>
                     <div className='flex flex-row w-3/4 my-2'>

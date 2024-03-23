@@ -15,6 +15,14 @@ function App() {
       colorFillContent: '#006D38',
       colorPrimary: '#006D38',
       borderRadius: 12,
+    },
+    components: {
+      Carousel: {
+        dotActiveWidth: 32,
+        dotHeight: 8,
+        dotWidth: 20
+      },
+
     }
   }}>
    <PersistGate loading={null} persistor={persistor}>

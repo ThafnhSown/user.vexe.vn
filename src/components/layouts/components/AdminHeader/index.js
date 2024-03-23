@@ -3,7 +3,10 @@ import { MenuOutlined } from '@ant-design/icons'
 import { Dropdown  } from 'antd'
 import logo from '../../../../assets/logo.png'
 import { useNavigate } from 'react-router'
+import { useState } from 'react'
+import ModalSignup from '../../../../screens/app/user/components/ModalSignup'
 function AdminHeader() {
+  const [modal, setModal] = useState(false)
   const navigate = useNavigate()
   const items = [
     {
@@ -49,7 +52,7 @@ function AdminHeader() {
             <Link to="/" className='focus:text-green font-bold text-lg px-6'>
                 Trang chủ
             </Link>
-            <Link to="/hang-xe" className='focus:text-green font-bold text-lg px-6'>
+            <Link onClick={() => setModal(true)} className='focus:text-green font-bold text-lg px-6'>
                 Trở thành đối tác
             </Link>
           </div>
@@ -63,6 +66,11 @@ function AdminHeader() {
             </div>
             <img src={logo}/>
         </div>
+      </div>
+      <div>
+        {
+          modal && <ModalSignup modalShow={modal} setModalShow={setModal}/>
+        }
       </div>
     </div>
   )

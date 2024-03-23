@@ -1,7 +1,7 @@
 import { Modal, Form, Typography, Input, Col, Row, DatePicker, Button } from "antd"
-import { EnvironmentFilled, ClockCircleFilled, PhoneFilled } from '@ant-design/icons'
+import { EnvironmentFilled, ClockCircleOutlined, PhoneFilled, PlusCircleOutlined, MinusCircleOutlined } from '@ant-design/icons'
 import { useEffect, useState } from "react"
-import { IconCar, IconTP, BluePoint, RedPoint } from '../../../../../assets/svgs/index'
+import { IconCar, IconTP, BluePoint, RedPoint, MiniBlue, MiniRed } from '../../../../../assets/svgs/index'
 import dayjs from 'dayjs'
 import { regexNumber } from "../../../../../utils/regex"
 import convert from "../../../../../utils/convert"
@@ -21,12 +21,12 @@ const ModalOrder = (props) => {
 
     const orderCoach = async () => {
         const data = form.getFieldsValue()
-        const sss = {...data, timeslotId: currentCoach.timeslotId, pickUpPointId: currentCoach.startPoint.location.id, dropOffPointId: currentCoach.endPoint.location.id, departureDate: date, returnDate: 22222, userId: 20}
-        console.log(sss)
-        // const res = await apiOrderCoach(sss)
-        // if(res.data.error == 0) {
-        //     setModalShow(false)
-        // }
+        const sss = {...data, quantity:numberTicket ,timeslotId: currentCoach.timeslotId, pickUpPointId: currentCoach.startPoint.location.id, dropOffPointId: currentCoach.endPoint.location.id, departureDate: date, returnDate: 22222, userId: 20}
+        // console.log(sss)
+        const res = await apiOrderCoach(sss)
+        if(res.data.error == 0) {
+            setModalShow(false)
+        }
     }
 
     return (
@@ -53,7 +53,7 @@ const ModalOrder = (props) => {
             <div>
                 <Row className="space-x-3">
                     <Col>
-                        <img src={currentCoach.coachCompany.logo} className='w-20 h-20' />
+                        <img src={currentCoach.coachCompany.logo} className='w-20 h-20 rounded-full' />
                     </Col>
                     <Col className='flex flex-col justify-normal'>
                         <Title className='mt-2' level={4}>{currentCoach.coachCompany.name}</Title>
@@ -61,27 +61,28 @@ const ModalOrder = (props) => {
                     </Col>
                 </Row>
             </div>
+            <div className="border border-dashed border-green my-3 w-full" />
             <Row>
                 <Col>
                     <Title style={{color: '#006D38'}}>{dayjs(currentCoach.departureTime).format("HH:mm")}</Title>              
                 </Col>
                 <Col>
                     <Row className='mx-2 space-x-2 flex flex-row items-center'><IconCar /><p className="text-base font-bold">{currentCoach.coachTypeName}</p></Row>
-                    <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleFilled /><p className="text-base font-bold"> Xuất bến: {currentCoach.startPoint.location.district} - {currentCoach.endPoint.location.district}</p></Row>
+                    <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-base font-bold"> Xuất bến: {currentCoach.startPoint.location.district} - {currentCoach.endPoint.location.district}</p></Row>
                 </Col>
             </Row>
-            <div className='mx-4 space-x-2 flex flex-row items-center truncate'>
+            <div className='space-x-2 flex flex-row items-center truncate'>
                         <IconTP />
                         <p className='font-extrabold'>Lộ trình:</p>
                         <p>{currentCoach.travelPath.detail}</p>
                     </div>
-                    <div className='mx-2 space-x-2 flex flex-row items-center'>
-                        <BluePoint/> 
+                    <div className='space-x-2 flex flex-row items-center'>
+                        <MiniBlue/> 
                         <p className='font-extrabold'>{currentCoach.startPoint.location.district}</p>
                         <p>= Trung chuyển đón {convert(currentCoach.startPoint)} </p>
                     </div>
-                    <div className='mx-2 space-x-2 flex flex-row items-center'>
-                        <RedPoint />
+                    <div className='space-x-2 flex flex-row items-center'>
+                        <MiniRed />
                         <p className='font-extrabold'>{currentCoach.endPoint.location.district}</p>
                         <p>= Trung chuyển trả {convert(currentCoach.endPoint)}</p>
                     </div>
@@ -96,7 +97,9 @@ const ModalOrder = (props) => {
                 <Col span={12}>
                     <label>Số lượng vé</label>
                     <Form.Item name="quantity" rules={[{ required: true, message: 'Please input your username!' }]}>
-                        <Input type='number' defaultValue={numberTicket} onChange={(e) => setNumberTicket(e.target.value)}/>
+                        <div className="flex flex-row">
+                            <Input className="ticket justify-center items-center space-x-2" prefix={<MinusCircleOutlined onClick={() => numberTicket > 1 ? setNumberTicket(numberTicket-1) : setNumberTicket(1)}/>} suffix={<PlusCircleOutlined onClick={() => numberTicket < 10 ? setNumberTicket(numberTicket+1): setNumberTicket(numberTicket)} />} min={1} value={numberTicket} onChange={(e) => setNumberTicket(e.target.value)}/>
+                        </div>
                     </Form.Item>
                 </Col>
             </Row>

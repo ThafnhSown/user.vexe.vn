@@ -41,5 +41,9 @@
 .ant-picker-date-panel {
     background-color: white;
     position: absolute;
-    left: -36px;
+    left: -48px;
+}
+
+.ant-cascader-menu li {
+    font-size: 16px;
 }

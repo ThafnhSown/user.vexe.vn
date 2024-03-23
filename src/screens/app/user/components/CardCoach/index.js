@@ -12,22 +12,24 @@ const CardCoach = (props) => {
     return (
         <div className='mobile:w-full'>
         <Card 
-        title={<div className=''>
-            <div className='space-x-3 grid grid-cols-12'>
-                <img src={coach.coachCompany.logo} className='w-20 h-20 col-span-1' />
+        title={<div>
+            <div className='space-x-3 grid grid-cols-12 mt-4'>
+                <img src={coach.coachCompany.logo} className='w-16 h-16 rounded-full col-span-1' />
                 <div className='flex flex-col col-span-8'>
-                    <Title className='mt-2' level={4}>{coach.coachCompany.name}</Title>
+                    <Title level={4}>{coach.coachCompany.name}</Title>
                         <p><PhoneFilled /> Hotline: {coach.coachCompany.hotline}</p>
                 </div>
                 <div className='justify-end col-span-3 mt-4'>
                     <a className='text-green'>Thông tin</a>
                 </div>
+               
             </div>
+            <div className="border border-dashed border-green mt-3 w-11/12 ju" />
         </div>}
         
         className='mobile:hidden desktop:block p-3'
         >
-            <div className='flex flex-row'>
+            <div className='flex flex-row mt-6'>
                 <div className='w-3/4'>
                     <Row>
                         <Col>
@@ -57,8 +59,9 @@ const CardCoach = (props) => {
 
                 <div className='w-1/4'>
                     <div className='flex flex-col justify-end'>
-                    <Title level={3}>{regexNumber(coach.price)}đ</Title>
-                    <Button 
+                    <Title level={3} >{regexNumber(coach.price)}đ</Title>
+                    <Button
+                    className='w-3/4' 
                     onClick={() => {
                         setModalShow(true)
                         setCurrentCoach(coach)
@@ -66,7 +69,6 @@ const CardCoach = (props) => {
                         Đặt vé
                     </Button>
                     </div>
-                    
                 </div>
             </div>
 
@@ -74,13 +76,11 @@ const CardCoach = (props) => {
 
         <Card
         className='mobile:block mobile:w-full desktop:hidden mobile'
-        title={<div className='s'>
+        title={<div>
             <Row>
-            <Col>
-            <img src={coach.coachCompany.logo} className='w-20 h-20' />
-            </Col>
+            <img src={coach.coachCompany.logo} className='w-12 h-12 rounded-full m-3 mt-6'/>
             <Col className='flex flex-col justify-normal'>
-            <Title className='mt-2' level={4}>{coach.coachCompany.name}</Title>
+            <Title className='mt-5' level={4}>{coach.coachCompany.name}</Title>
             <p><PhoneFilled /> Hotline: {coach.coachCompany.hotline}</p>
             </Col>
             </Row>
@@ -88,6 +88,7 @@ const CardCoach = (props) => {
         extra={<a className='text-background'>Thông tin</a>}
         >
             <div className='flex flex-col'>
+                <div className="border border-dashed border-green mt-3 w-full" />
                 <div className=''>
                     <div className='flex flex-row items-center'>
                         <Title className='w-1/2' style={{color: '#006D38'}}>{dayjs(coach.departureTime).format("HH:mm")}</Title>              
@@ -113,7 +114,7 @@ const CardCoach = (props) => {
                     <div className='flex flex-row mx-3'>
                     <Title className='w-3/4' level={3}>{coach.price}đ</Title>
                     <Button
-                    className='w-1/3 flex justify-end' 
+                    className='w-1/4 flex justify-end' 
                     onClick={() => {
                         setModalShow(true)
                         setCurrentCoach(coach)
