@@ -42,7 +42,7 @@ const CardCoach = (props) => {
                             <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-base font-bold"> Xuất bến: {coach.startPoint.location.district} - {coach.endPoint.location.district}</p></Row>
                         </Col>
                     </Row>
-                    <div className='space-x-2 flex flex-row items-center truncate'>
+                    <div className='space-x-2 flex flex-row items-center'>
                         <IconTP />
                         <p className='font-extrabold'>Lộ trình:</p>
                         {
@@ -102,11 +102,13 @@ const CardCoach = (props) => {
                         </div>             
                         
                     </div>
-                    <div className='space-x-2 flex flex-row items-center truncate'>
+                    <div className='space-x-2 flex flex-row items-center'>
                         <IconTP />
                         <p className='font-bold'>Lộ trình: </p>
                         {
-                            detail ? <p className='truncate'>{coach.travelPath.detail}</p> : <p className='truncate'>{coach.travelPath.name}</p>
+                            detail ? <div className='overflow-scroll w-56'>
+                                    <p className=''>{coach.travelPath.detail}</p>
+                                </div> : <p className='truncate'>{coach.travelPath.name}</p>
                         }
                         <p className='text-green' onClick={() => setDetail(!detail)}>{`${!detail ?  'Chi tiết' : 'Ẩn'}`}</p>
                     </div>

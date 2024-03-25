@@ -99,7 +99,7 @@ const FindCoach = () => {
                     <div class="w-3/4 mt-2 h-1 border-t border-green opacity-20"></div>
                     <div className='flex flex-row w-3/4 my-2'>
                         <Calendar />
-                        <DatePicker inputReadOnly={true} locale={locale} className='items-center justify-center' suffixIcon={<div />} disabledDate={disabledDate} onChange={value => setStartTime(new Date(value).valueOf())} placeholder='Chọn ngày đi'/>
+                        <DatePicker inputReadOnly={true} locale={locale} className='items-center justify-center w-full' suffixIcon={<div />} disabledDate={disabledDate} onChange={value => setStartTime(new Date(value).valueOf())} placeholder='Chọn ngày đi'/>
                     </div>
                 </div>
  

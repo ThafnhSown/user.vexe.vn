@@ -41,7 +41,7 @@ function AppLayout({ children }) {
       </div>
       <Banner/>
         
-      <div className={`${pathName == '/tim-kiem' ? 'mt-8' : 'mt-56'} mx-4 bg-neutral `}>{children}</div>
+      <div className={`${pathName == '/tim-kiem' ? 'mt-4' : 'mt-56'} mx-4 h-screen bg-neutral`}>{children}</div>
       
     </div>
     <footer className="fixed bottom-0 w-full bg-green flex justify-center">
