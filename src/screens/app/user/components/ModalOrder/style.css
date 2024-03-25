@@ -46,6 +46,11 @@ label a:hover {
 }
 
 .ticket input {
-    width: 50%;
+    width: 10%;
     justify-content: center;
+    align-items: center;
+}
+
+.ticket .ant-input {
+    margin:0px 30px 0px 30px !important;
 }

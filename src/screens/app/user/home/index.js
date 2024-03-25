@@ -38,10 +38,10 @@ const Home = () => {
                 }
                 </div>
                 <div className='mobile:flex mobile:flex-col justify-center desktop:hidden bg-white'>
-                    <Carousel autoplay className='space-x-1'>
+                    <Carousel className='space-x-1 rounded-md'>
                         {
-                            listSubBanner.map(banner => <div className='overflow-hidden h-36'>
-                                <img className='rounded-lg object-cover h-full w-full' src={banner.imageUrl}/>
+                            listSubBanner.map(banner => <div className='overflow-hidden h-36 bg-neutral'>
+                                <img className='rounded-md object-cover h-full w-full' src={banner.imageUrl}/>
                             </div>)
                         }
                     </Carousel>
@@ -49,9 +49,9 @@ const Home = () => {
                
             <div className='mt-4 mb-4'>                
             <Title level={3} style={{color:"#006D38"}} className='mobile:hidden desktop:flex'>ĐIỂM ĐẾN PHỔ BIẾN</Title>
-                <div className='flex mobile:hidden desktop:flex flex-row space-x-8 items-center'>
+                <div className='mobile:hidden desktop:grid flex-row items-center grid grid-cols-4 gap-8'>
                     {
-                        listNews.map((news, index) => index < 4 ? <div className='bg-white w-1/4 rounded-xs pb-3'>
+                        listNews.map((news, index) => index < 4 ? <div className='bg-white w-full rounded-xs pb-3'>
                             <NewsCard news={news}/>
                             </div>
                              : null)

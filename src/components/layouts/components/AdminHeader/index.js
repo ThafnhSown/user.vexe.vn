@@ -28,23 +28,11 @@ function AdminHeader() {
     {
       key: '2',
       label: (
-        <a onClick={() => {
-          navigate("/hang-xe")
-          }} className="text-sm font-quicksand">
-          Hãng xe
+        <a onClick={() => setModal(true)}className="text-sm font-quicksand">
+          Trở thành đối tác
         </a>
       )
     },
-    {
-      key: '3',
-      label: (
-        <a onClick={() => {
-          navigate("/")
-          }} className="text-sm font-quicksand">
-          Tin tức
-        </a>
-      )
-    }
   ];
 
   return (
@@ -64,17 +52,17 @@ function AdminHeader() {
           </div>
       </div>
       <div className='desktop:hidden'>
-        <div className={`${pathName == '/tim-kiem' ? 'bg-green space-x-4' : 'bg-white space-x-28'} h-20 flex items-center`}>
+        <div className={`${pathName == '/tim-kiem' ? 'bg-green space-x-4' : 'bg-white space-x-20'} h-20 flex items-center`}>
             <div className='flex justify-start ml-4'>
-            <Dropdown menu={{items}}>
               {
-                pathName == '/tim-kiem' ? <ArrowLeftOutlined onClick={() => navigate("/")} style={{color: 'white'}}/> : <MenuOutlined style={{color: 'black', size:'40px'}}/>
+                pathName == '/tim-kiem' ? <ArrowLeftOutlined onClick={() => navigate("/")} style={{color: 'white'}}/> :  <Dropdown menu={{items}}>
+                  <MenuOutlined style={{color: 'black', size:'40px'}}/>
+              </Dropdown >
               }
-              
-            </Dropdown >
+           
             </div>
             <div className={`${pathName == '/tim-kiem' ? 'flex flex-col' : 'hidden'}`}>
-              <h1 className='text-white'>{searchInfo.startPoint} - {searchInfo?.endPoint}</h1>
+              <h1 className='text-white'>{searchInfo?.startPoint} - {searchInfo?.endPoint}</h1>
               <h1 className='text-white'>{dayjs(searchInfo?.time).format('DD/MM/YY')}</h1>
             </div>
             <img src={logo} className={`${pathName == '/tim-kiem' ? 'hidden' : ''}`}/>

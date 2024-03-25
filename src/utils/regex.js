@@ -18,7 +18,7 @@ export const locale = {
         "month": "Tháng",
         "year": "Năm",
         "timeSelect": "Select time",
-        "dateSelect": "Select date",
+        "dateSelect": "Chọn ngày đi",
         "monthSelect": "Choose a month",
         "yearSelect": "Choose a year",
         "decadeSelect": "Choose a decade",

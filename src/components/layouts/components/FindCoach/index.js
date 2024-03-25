@@ -72,7 +72,7 @@ const FindCoach = () => {
                     </div>
                     <div className='point-input w-1/4 flex flex-row items-center border border-black rounded-md px-1'>
                         <Calendar />
-                        <DatePicker mode='date' locale={locale} suffixIcon={<div />} disabledDate={disabledDate} size='large' onChange={value => setStartTime(dayjs(value).startOf('day').valueOf())} placeholder='Chọn ngày đi'/>
+                        <DatePicker inputReadOnly={true} mode='date' locale={locale} suffixIcon={<div />} disabledDate={disabledDate} size='large' onChange={value => setStartTime(dayjs(value).startOf('day').valueOf())} placeholder='Chọn ngày đi'/>
                     </div>
                     <Button onClick={() => handleFindCoach()} className='text-xl font-extrabold mobile:hidden desktop:block rounded-md h-4/5 w-1/5'>Tìm xe</Button>
                     {/* <DatePicker onChange={value => setEndTime(new Date(value).valueOf())} placeholder='Chọn ngày về'/> */}
@@ -99,7 +99,7 @@ const FindCoach = () => {
                     <div class="w-3/4 mt-2 h-1 border-t border-green opacity-20"></div>
                     <div className='flex flex-row w-3/4 my-2'>
                         <Calendar />
-                        <DatePicker locale={locale} className='items-center justify-center' suffixIcon={<div />} disabledDate={disabledDate} onChange={value => setStartTime(new Date(value).valueOf())} placeholder='Chọn ngày đi'/>
+                        <DatePicker inputReadOnly={true} locale={locale} className='items-center justify-center' suffixIcon={<div />} disabledDate={disabledDate} onChange={value => setStartTime(new Date(value).valueOf())} placeholder='Chọn ngày đi'/>
                     </div>
                 </div>
  

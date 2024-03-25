@@ -10,7 +10,7 @@ function AppLayout({ children }) {
   const pathName = location.pathname
 
   return (
-    <div>
+    <div className="bg-neutral h-full">
     <div className='flex-col flex mobile:hidden desktop:flex bg-neutral'>
       <div className='grid grid-cols-12'>
         <div className='col-span-1 bg-white'></div>
@@ -35,19 +35,20 @@ function AppLayout({ children }) {
         </div>
       </footer>
     </div>
-    <div className="desktop:hidden bg-neutral relative">
+    <div className="desktop:hidden bg-neutral mb-8">
       <div>
         <AdminHeader />
       </div>
       <Banner/>
         
       <div className={`${pathName == '/tim-kiem' ? 'mt-8' : 'mt-56'} mx-4 bg-neutral `}>{children}</div>
-      <footer className="bg-green flex justify-center mt-12">
+      
+    </div>
+    <footer className="fixed bottom-0 w-full bg-green flex justify-center">
         <div className="text-white">
           Bản quyền <CopyrightOutlined /> 2024 thuộc về vexe.vn
         </div>
       </footer>
-    </div>
     </div>
     
   )

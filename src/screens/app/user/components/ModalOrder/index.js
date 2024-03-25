@@ -3,12 +3,11 @@ import { EnvironmentFilled, ClockCircleOutlined, PhoneFilled, PlusCircleOutlined
 import { useEffect, useState } from "react"
 import { IconCar, IconTP, BluePoint, RedPoint, MiniBlue, MiniRed } from '../../../../../assets/svgs/index'
 import dayjs from 'dayjs'
-import { regexNumber } from "../../../../../utils/regex"
+import { regexNumber, locale } from "../../../../../utils/regex"
 import convert from "../../../../../utils/convert"
 const { Title } = Typography
 import './style.css'
 import { apiOrderCoach } from "../../../../../api/services"
-import { current } from "@reduxjs/toolkit"
 
 const ModalOrder = (props) => {
     const [numberTicket, setNumberTicket] = useState(1)
@@ -59,11 +58,11 @@ const ModalOrder = (props) => {
                 </div>
             </div>
             <div className="border border-dashed border-green my-3 w-full" />
-            <div className='flex flex-row items-center h-12 space-x-2'>
+            <div className='flex flex-row items-center h-12 space-x-4'>
                         <Title className="mt-4" style={{color: '#006D38'}}>{dayjs(currentCoach.departureTime).format("HH:mm")}</Title>
                         <div className='flex flex-col'>
                             <div className='space-x-2 flex flex-row items-center'><IconCar /><p className="text-xs font-bold">{currentCoach.coachTypeName}</p></div>
-                            <div className='space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-xs font-bold"> Xuất bến: {currentCoach.startPoint.location.district} - {currentCoach.endPoint.location.district}</p></div>
+                            <div className='space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-xs font-bold"> Xuất bến: {currentCoach.startPoint.location.district}</p></div>
                         </div>             
                         
                     </div>
@@ -87,14 +86,14 @@ const ModalOrder = (props) => {
                 <Col span={12}>
                     <label>Ngày đi</label>
                     <Form.Item name="departureDate" className="flex flex-col" rules={[{ required: true, message: 'Nhập ngày xuất phát' }]}>
-                        <DatePicker className="w-full" onChange={(date) => setDate(date.valueOf())}/>
+                        <DatePicker inputReadOnly={true} size="large" placeholder="Chọn ngày đi" locale={locale} className="w-full" onChange={(date) => setDate(date.valueOf())}/>
                     </Form.Item>
                 </Col>
                 <Col span={12}>
                     <label>Số lượng vé</label>
                     <Form.Item name="quantity" rules={[{ required: true, message: 'Nhập số lượng vé!' }]}>
                         <div className="flex flex-row">
-                            <Input className="ticket justify-center items-center space-x-2" prefix={<MinusCircleOutlined onClick={() => numberTicket > 1 ? setNumberTicket(numberTicket-1) : setNumberTicket(1)}/>} suffix={<PlusCircleOutlined onClick={() => numberTicket < 10 ? setNumberTicket(numberTicket+1): setNumberTicket(numberTicket)} />} min={1} value={numberTicket} onChange={(e) => setNumberTicket(e.target.value)}/>
+                            <Input size="large" className="ticket justify-center items-center space-x-2" prefix={<MinusCircleOutlined onClick={() => numberTicket > 1 ? setNumberTicket(numberTicket-1) : setNumberTicket(1)}/>} suffix={<PlusCircleOutlined onClick={() => numberTicket < 10 ? setNumberTicket(numberTicket+1): setNumberTicket(numberTicket)} />} min={1} value={numberTicket} onChange={(e) => setNumberTicket(e.target.value)}/>
                         </div>
                     </Form.Item>
                 </Col>
@@ -103,20 +102,20 @@ const ModalOrder = (props) => {
                 <Col span={12}>
                     <label>Họ và tên</label>
                     <Form.Item name="passengerName" rules={[{ required: true, message: 'Please input your username!' }]}>
-                        <Input placeholder="Nhập họ tên"/>
+                        <Input size="large" placeholder="Nhập họ tên"/>
                     </Form.Item>
                 </Col>
 
                 <Col span={12}>
                     <label>Số điện thoại</label>
                     <Form.Item name="phoneNumber" rules={[{ required: true, message: 'Please input your username!' }]}>
-                        <Input placeholder="Nhập số điện thoại"/>
+                        <Input size="large" placeholder="Nhập số điện thoại"/>
                     </Form.Item>
                 </Col>
             </Row>
             <label>Ghi chú</label>
             <Form.Item name="note">
-                <Input placeholder="Nhập ghi chú"/>
+                <Input size="large" placeholder="Nhập ghi chú"/>
             </Form.Item>
         </Modal>
        
