@@ -46,6 +46,6 @@ label a:hover {
 }
 
 .ticket input {
-    margin-left: 4px;
-    width: 5%;
+    width: 50%;
+    justify-content: center;
 }

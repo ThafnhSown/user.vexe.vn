@@ -35,13 +35,13 @@ function AppLayout({ children }) {
         </div>
       </footer>
     </div>
-    <div className="desktop:hidden">
+    <div className="desktop:hidden bg-neutral relative">
       <div>
         <AdminHeader />
       </div>
-        <Banner/>
+      <Banner/>
         
-      <div className={`${pathName == '/tim-kiem' ? 'mt-8' : 'mt-48'} mx-4 bg-neutral `}>{children}</div>
+      <div className={`${pathName == '/tim-kiem' ? 'mt-8' : 'mt-56'} mx-4 bg-neutral `}>{children}</div>
       <footer className="bg-green flex justify-center mt-12">
         <div className="text-white">
           Bản quyền <CopyrightOutlined /> 2024 thuộc về vexe.vn

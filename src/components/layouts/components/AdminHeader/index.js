@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom'
-import { MenuOutlined } from '@ant-design/icons'
+import { MenuOutlined, ArrowLeftOutlined } from '@ant-design/icons'
 import { Dropdown  } from 'antd'
 import logo from '../../../../assets/logo.png'
-import { useNavigate } from 'react-router'
+import { useNavigate, useLocation } from 'react-router'
 import { useState } from 'react'
 import ModalSignup from '../../../../screens/app/user/components/ModalSignup'
+import { useAppSelector } from '../../../../redux/hook'
+import dayjs from 'dayjs'
+
 function AdminHeader() {
+  const searchInfo = useAppSelector((state) => state.userState.search)
   const [modal, setModal] = useState(false)
+  const location = useLocation()
+  const pathName = location.pathname
   const navigate = useNavigate()
   const items = [
     {
@@ -58,13 +64,20 @@ function AdminHeader() {
           </div>
       </div>
       <div className='desktop:hidden'>
-        <div className='bg-white h-20 flex items-center space-x-28'>
+        <div className={`${pathName == '/tim-kiem' ? 'bg-green space-x-4' : 'bg-white space-x-28'} h-20 flex items-center`}>
             <div className='flex justify-start ml-4'>
             <Dropdown menu={{items}}>
-              <MenuOutlined style={{color: 'black', size:'40px'}}/>
+              {
+                pathName == '/tim-kiem' ? <ArrowLeftOutlined onClick={() => navigate("/")} style={{color: 'white'}}/> : <MenuOutlined style={{color: 'black', size:'40px'}}/>
+              }
+              
             </Dropdown >
             </div>
-            <img src={logo}/>
+            <div className={`${pathName == '/tim-kiem' ? 'flex flex-col' : 'hidden'}`}>
+              <h1 className='text-white'>{searchInfo.startPoint} - {searchInfo?.endPoint}</h1>
+              <h1 className='text-white'>{dayjs(searchInfo?.time).format('DD/MM/YY')}</h1>
+            </div>
+            <img src={logo} className={`${pathName == '/tim-kiem' ? 'hidden' : ''}`}/>
         </div>
       </div>
       <div>

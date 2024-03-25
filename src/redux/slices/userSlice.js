@@ -6,6 +6,7 @@ const initialState = {
     options: [],
     listCompany: [],
     newsFeed: [],
+    search: {},
     loading: false
 };
 
@@ -44,7 +45,9 @@ export const userSlice = createSlice({
     name: "user",
     initialState,
     reducers: {
-
+        setCurrentSearch: (state, action) => {
+            state.search = action.payload
+        }
     },
     extraReducers: (builder) => {
       builder.addCase(requestFindCoach.fulfilled, (state, action) => {
@@ -68,5 +71,10 @@ export const userSlice = createSlice({
     }
 });
 export const userState = (state) => state.userState;
+
+export const {
+  setCurrentSearch
+} = userSlice.actions
+
 
 export default userSlice.reducer;

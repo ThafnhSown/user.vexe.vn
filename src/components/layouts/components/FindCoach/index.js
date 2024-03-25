@@ -3,7 +3,7 @@ import { BluePoint, RedPoint, Swap, Calendar } from '../../../../assets/svgs'
 import { SmallDashOutlined, ArrowRightOutlined } from '@ant-design/icons'
 import { useState, useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hook'
-import { requestFindCoach, requestLoadOption, requestLoadCompany } from '../../../../redux/slices/userSlice'
+import { requestFindCoach, requestLoadOption, requestLoadCompany, setCurrentSearch } from '../../../../redux/slices/userSlice'
 import { unwrapResult } from "@reduxjs/toolkit";
 import { useNavigate, useLocation, useLoaderData } from 'react-router-dom'
 import dayjs from 'dayjs'
@@ -36,18 +36,23 @@ const FindCoach = () => {
         }
         const res = await dispatch(requestFindCoach(data))
         const tmp = unwrapResult(res)
+        let searchInfo = {
+            startPoint: tmp.data[0]?.startPoint.location.district,
+            endPoint: tmp.data[0]?.endPoint.location.district,
+            time: startTime
+        }
+        dispatch(setCurrentSearch(searchInfo))
         if(tmp.error == 0) {
             navigate("/tim-kiem")
         }
     }
-
     const disabledDate = current => {
         const fifteenDaysFromNow = moment().add(15, 'days');
         return current && current <= moment().startOf('day') || current > fifteenDaysFromNow.endOf('day');;
       };  
 
     return (
-        <div className={`space-y-2 mobile:w-11/12 desktop:w-2/3 absolute mobile:-bottom-40 desktop:h-20 rounded-full z-10 ${pathName == '/tim-kiem' ? 'mobile:hidden desktop:block desktop:top-8' : 'desktop:bottom-4'}`}>
+        <div className={`space-y-2 mobile:w-11/12 desktop:w-2/3 absolute mobile:-bottom-48 desktop:h-20 rounded-full z-10 ${pathName == '/tim-kiem' ? 'mobile:hidden desktop:block desktop:top-8' : 'desktop:bottom-4'}`}>
                 <div className='flex flex-row w-full bg-white rounded-md p-1 items-center justify-center space-x-1 mobile:hidden desktop:flex'>
                     <div className='point-input w-1/4 flex flex-row items-center border border-black rounded-md px-1'>
                         <BluePoint />
@@ -67,7 +72,7 @@ const FindCoach = () => {
                     </div>
                     <div className='point-input w-1/4 flex flex-row items-center border border-black rounded-md px-1'>
                         <Calendar />
-                        <DatePicker locale={locale} suffixIcon={<div />} disabledDate={disabledDate} size='large' onChange={value => setStartTime(dayjs(value).startOf('day').valueOf())} placeholder='Chọn ngày đi'/>
+                        <DatePicker mode='date' locale={locale} suffixIcon={<div />} disabledDate={disabledDate} size='large' onChange={value => setStartTime(dayjs(value).startOf('day').valueOf())} placeholder='Chọn ngày đi'/>
                     </div>
                     <Button onClick={() => handleFindCoach()} className='text-xl font-extrabold mobile:hidden desktop:block rounded-md h-4/5 w-1/5'>Tìm xe</Button>
                     {/* <DatePicker onChange={value => setEndTime(new Date(value).valueOf())} placeholder='Chọn ngày về'/> */}

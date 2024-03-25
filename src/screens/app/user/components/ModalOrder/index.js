@@ -8,6 +8,7 @@ import convert from "../../../../../utils/convert"
 const { Title } = Typography
 import './style.css'
 import { apiOrderCoach } from "../../../../../api/services"
+import { current } from "@reduxjs/toolkit"
 
 const ModalOrder = (props) => {
     const [numberTicket, setNumberTicket] = useState(1)
@@ -50,27 +51,22 @@ const ModalOrder = (props) => {
             onCancel={() => setModalShow(false)}
             width={800}
         >
-            <div>
-                <Row className="space-x-3">
-                    <Col>
-                        <img src={currentCoach.coachCompany.logo} className='w-20 h-20 rounded-full' />
-                    </Col>
-                    <Col className='flex flex-col justify-normal'>
-                        <Title className='mt-2' level={4}>{currentCoach.coachCompany.name}</Title>
-                        <p><PhoneFilled /> Hotline: {currentCoach.coachCompany.hotline}</p>
-                    </Col>
-                </Row>
+             <div className='flex flex-row h-20'>
+                <img src={currentCoach.coachCompany.logo} className='w-20 h-20 rounded-full'/>
+                <div className='flex flex-col h-12 mt-5 ml-4'>
+                    <h1 className='font-bold text-lg'>{currentCoach.coachCompany.name}</h1>
+                    <p><PhoneFilled />Hotline: {currentCoach.coachCompany.hotline}</p>
+                </div>
             </div>
             <div className="border border-dashed border-green my-3 w-full" />
-            <Row>
-                <Col>
-                    <Title style={{color: '#006D38'}}>{dayjs(currentCoach.departureTime).format("HH:mm")}</Title>              
-                </Col>
-                <Col>
-                    <Row className='mx-2 space-x-2 flex flex-row items-center'><IconCar /><p className="text-base font-bold">{currentCoach.coachTypeName}</p></Row>
-                    <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-base font-bold"> Xuất bến: {currentCoach.startPoint.location.district} - {currentCoach.endPoint.location.district}</p></Row>
-                </Col>
-            </Row>
+            <div className='flex flex-row items-center h-12 space-x-2'>
+                        <Title className="mt-4" style={{color: '#006D38'}}>{dayjs(currentCoach.departureTime).format("HH:mm")}</Title>
+                        <div className='flex flex-col'>
+                            <div className='space-x-2 flex flex-row items-center'><IconCar /><p className="text-xs font-bold">{currentCoach.coachTypeName}</p></div>
+                            <div className='space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-xs font-bold"> Xuất bến: {currentCoach.startPoint.location.district} - {currentCoach.endPoint.location.district}</p></div>
+                        </div>             
+                        
+                    </div>
             <div className='space-x-2 flex flex-row items-center truncate'>
                         <IconTP />
                         <p className='font-extrabold'>Lộ trình:</p>
@@ -90,13 +86,13 @@ const ModalOrder = (props) => {
             <Row gutter={[8, 8]}>
                 <Col span={12}>
                     <label>Ngày đi</label>
-                    <Form.Item name="departureDate" className="flex flex-col" rules={[{ required: true, message: 'Please input your username!' }]}>
+                    <Form.Item name="departureDate" className="flex flex-col" rules={[{ required: true, message: 'Nhập ngày xuất phát' }]}>
                         <DatePicker className="w-full" onChange={(date) => setDate(date.valueOf())}/>
                     </Form.Item>
                 </Col>
                 <Col span={12}>
                     <label>Số lượng vé</label>
-                    <Form.Item name="quantity" rules={[{ required: true, message: 'Please input your username!' }]}>
+                    <Form.Item name="quantity" rules={[{ required: true, message: 'Nhập số lượng vé!' }]}>
                         <div className="flex flex-row">
                             <Input className="ticket justify-center items-center space-x-2" prefix={<MinusCircleOutlined onClick={() => numberTicket > 1 ? setNumberTicket(numberTicket-1) : setNumberTicket(1)}/>} suffix={<PlusCircleOutlined onClick={() => numberTicket < 10 ? setNumberTicket(numberTicket+1): setNumberTicket(numberTicket)} />} min={1} value={numberTicket} onChange={(e) => setNumberTicket(e.target.value)}/>
                         </div>

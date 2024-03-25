@@ -5,7 +5,7 @@
 }
 
 .ant-card-head {
-    width: 20px;
+    border-bottom: none !important;
 }
 
 .mobile .ant-card-head-wrapper {

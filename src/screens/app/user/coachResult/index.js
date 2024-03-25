@@ -36,7 +36,7 @@ const CoachResult = () => {
     }, [])
     
     return (
-        <div className="flex flex-row mobile: space-x-0 desktop:space-x-8">
+        <div className="flex flex-row mobile: space-x-0 desktop:space-x-8 bg-neutral">
             <div className="w-1/3 space-y-4 mobile:hidden desktop:flex flex-col">
                 <Card>
                     <Title level={4}>Sắp xếp</Title>

@@ -77,42 +77,42 @@ const CardCoach = (props) => {
         <Card
         className='mobile:block mobile:w-full desktop:hidden mobile'
         title={<div>
-            <Row>
-            <img src={coach.coachCompany.logo} className='w-12 h-12 rounded-full m-3 mt-6'/>
-            <Col className='flex flex-col justify-normal'>
-            <Title className='mt-5' level={4}>{coach.coachCompany.name}</Title>
-            <p><PhoneFilled /> Hotline: {coach.coachCompany.hotline}</p>
-            </Col>
-            </Row>
+            <div className='flex flex-row h-20'>
+                <img src={coach.coachCompany.logo} className='w-12 h-12 rounded-full m-3 mt-6'/>
+                <div className='flex flex-col h-12 mt-5'>
+                    <h1 className='font-bold'>{coach.coachCompany.name}</h1>
+                    <p><PhoneFilled /> Hotline: {coach.coachCompany.hotline}</p>
+                </div>
+            </div>
         </div>}
-        extra={<a className='text-background'>Thông tin</a>}
+        extra={<a className='text-background mr-4'>Thông tin</a>}
         >
             <div className='flex flex-col'>
-                <div className="border border-dashed border-green mt-3 w-full" />
-                <div className=''>
-                    <div className='flex flex-row items-center'>
-                        <Title className='w-1/2' style={{color: '#006D38'}}>{dayjs(coach.departureTime).format("HH:mm")}</Title>              
-                        <div className='w-1/2 pl-4 mx-2 space-x-2 flex flex-row items-center'><IconCar /><p className="text-base font-bold">{coach.coachTypeName}</p></div>
-                       
+                <div className="border border-dashed border-green w-full mt-1" />
+                    <div className='flex flex-row items-center h-12'>
+                        <Title className='w-1/3 mt-3' style={{color: '#006D38'}}>{dayjs(coach.departureTime).format("HH:mm")}</Title>
+                        <div className='w-2/3 flex flex-col'>
+                            <div className='space-x-2 flex flex-row items-center'><IconCar /><p className="text-xs font-bold">{coach.coachTypeName}</p></div>
+                            <div className='space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-xs font-bold"> Xuất bến: {coach.startPoint.location.district} - {coach.endPoint.location.district}</p></div>
+                        </div>             
+                        
                     </div>
-                    <Row className='space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-xs font-bold"> Xuất bến: {coach.startPoint.location.district} - {coach.endPoint.location.district}</p></Row>
-                    <div className='space-x-2 flex flex-row items-center truncate'>
+                    <div className='space-x-2 font-bold flex flex-row items-center truncate'>
                         <IconTP />
                         <p>Lộ trình: {coach.travelPath.detail}</p>
                     </div>
                     <div className='space-x-2 flex flex-row items-center'>
                         <MiniBlue />
-                        <p className='truncate'>{coach.startPoint.location.district} = Trung chuyển đón </p>
+                        <p className='truncate font-bold'>{coach.startPoint.location.district} = Trung chuyển đón </p>
                     </div>
                     <div className='space-x-2 flex flex-row items-center'>
                         <MiniRed />
-                        <p className='truncate'>{coach.endPoint.location.district} = Trung chuyển trả</p>
+                        <p className='truncate font-bold'>{coach.endPoint.location.district} = Trung chuyển trả</p>
                     </div>
-                </div>
 
                 <div className=''>
-                    <div className='flex flex-row mx-3'>
-                    <Title className='w-3/4' level={3}>{coach.price}đ</Title>
+                    <div className='flex flex-row h-8'>
+                    <Title className='w-3/4' level={3}>{regexNumber(coach.price)}đ</Title>
                     <Button
                     className='w-1/4 flex justify-end' 
                     onClick={() => {

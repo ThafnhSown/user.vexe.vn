@@ -3,10 +3,12 @@ import datve from '../../../../assets/dat-ve.png'
 import dichvu from '../../../../assets/dich-vu.png'
 import phucvu from '../../../../assets/phuc-vu.png'
 import { useAppDispatch, useAppSelector } from '../../../../redux/hook'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { requestLoadNewsFeed } from '../../../../redux/slices/userSlice'
 import NewsCard from '../components/NewsCard'
 import { requestLoadSubBanner } from '../../../../redux/slices/newsSlice'
+import ReactCardSlider from "react-card-slider-component";
+import './style.css'
 
 const { Title } = Typography
 
@@ -14,10 +16,16 @@ const Home = () => {
     const dispatch = useAppDispatch()
     const listNews = useAppSelector(state => state.userState.newsFeed)
     const listSubBanner = useAppSelector(state => state.newsState.subBanner)
-
+    const [ss, setSs] = useState([]) 
     useEffect(() => {
         dispatch(requestLoadNewsFeed())
         dispatch(requestLoadSubBanner(1))
+        let tmp = listNews.map(news => ({
+            title: news.title,
+            image: news.imageUrl,
+            description: news.content
+        }))
+        setSs(tmp)
     }, [])
 
     return (
@@ -39,23 +47,21 @@ const Home = () => {
                     </Carousel>
                 </div>
                
-            <div className='mt-4 mb-6'>                <Title level={3} style={{color:"#006D38"}} className='mobile:hidden desktop:flex'>ĐIỂM ĐẾN PHỔ BIẾN</Title>
+            <div className='mt-4 mb-4'>                
+            <Title level={3} style={{color:"#006D38"}} className='mobile:hidden desktop:flex'>ĐIỂM ĐẾN PHỔ BIẾN</Title>
                 <div className='flex mobile:hidden desktop:flex flex-row space-x-8 items-center'>
                     {
-                        listNews.map((news, index) => index < 4 ? <NewsCard news={news}/> : null)
+                        listNews.map((news, index) => index < 4 ? <div className='bg-white w-1/4 rounded-xs pb-3'>
+                            <NewsCard news={news}/>
+                            </div>
+                             : null)
                     }
                 </div>
-                <Title level={4} style={{color:"#006D38"}} className='mobile:flex desktop:hidden ml-8'>ĐIỂM ĐẾN PHỔ BIẾN</Title>
-                <div className='grid grid-cols-12 flex-row desktop:hidden'>
-                    <div className='col-span-1'></div>
-                    <div className='col-span-10 flex flex-col justify-center'>
-                        <Carousel className='news-carousel'>
-                            {
-                                listNews.map((news, index) => index < 4 ? <NewsCard news={news}/> : null)
-                            }
-                        </Carousel>
+                <Title level={4} style={{color:"#006D38"}} className='mobile:flex desktop:hidden'>ĐIỂM ĐẾN PHỔ BIẾN</Title>
+                <div className='flex-row desktop:hidden'>
+                    <div className='flex flex-col justify-center'>
+                        <ReactCardSlider slides={ss} onClick={(e) => e.preventDefault()}/>
                     </div>
-                    <div className='col-span-1'></div>
                 </div>
               
             </div>
