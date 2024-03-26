@@ -6,11 +6,18 @@ import { regexNumber } from '../../../../../utils/regex'
 import { useState } from 'react'
 const { Title } = Typography
 import dayjs from 'dayjs'
+import { apiListOfficeByUser } from '../../../../../api/services'
 import './style.css'
 
 const CardCoach = (props) => {
     const { coach, setModalShow, setCurrentCoach } = props    
     const [detail, setDetail] = useState(false)
+
+    const handleLoadListOffice = async (id) => {
+        const res = await apiListOfficeByUser(id)
+        console.log(res)
+    }
+
     return (
         <div className='mobile:w-full'>
         <Card 
@@ -22,7 +29,7 @@ const CardCoach = (props) => {
                         <p><PhoneFilled /> Hotline: {coach.coachCompany.hotline}</p>
                 </div>
                 <div className='justify-end col-span-3 mt-4'>
-                    <a className='text-green'>Thông tin</a>
+                    <a className='text-green' onClick={() => handleLoadListOffice(coach.coachCompany.id)}>Thông tin</a>
                 </div>
                
             </div>
@@ -90,7 +97,7 @@ const CardCoach = (props) => {
                 </div>
             </div>
         </div>}
-        extra={<a className='text-background mr-4'>Thông tin</a>}
+        extra={<a className='text-background mr-4' onClick={() => handleLoadListOffice(coach.coachCompany.id)}>Thông tin</a>}
         >
             <div className='flex flex-col'>
                 <div className="border border-dashed border-green w-full mt-4" />
@@ -106,7 +113,7 @@ const CardCoach = (props) => {
                         <IconTP />
                         <p className='font-bold'>Lộ trình: </p>
                         {
-                            detail ? <div className='overflow-scroll w-56'>
+                            detail ? <div className='overflow-scroll w-48'>
                                     <p className=''>{coach.travelPath.detail}</p>
                                 </div> : <p className='truncate'>{coach.travelPath.name}</p>
                         }

@@ -1,4 +1,4 @@
-import { Modal, Form, Typography, Input, Col, Row, DatePicker, Button } from "antd"
+import { Modal, Form, Typography, Input, Col, Row, DatePicker, Button, Space } from "antd"
 import { EnvironmentFilled, ClockCircleOutlined, PhoneFilled, PlusCircleOutlined, MinusCircleOutlined } from '@ant-design/icons'
 import { useEffect, useState } from "react"
 import { IconCar, IconTP, BluePoint, RedPoint, MiniBlue, MiniRed } from '../../../../../assets/svgs/index'
@@ -69,7 +69,7 @@ const ModalOrder = (props) => {
             <div className='space-x-2 flex flex-row items-center truncate'>
                         <IconTP />
                         <p className='font-extrabold'>Lộ trình:</p>
-                        <p>{currentCoach.travelPath.detail}</p>
+                        <p className="overflow-scroll w-3/4">{currentCoach.travelPath.detail}</p>
                     </div>
                     <div className='space-x-2 flex flex-row items-center'>
                         <MiniBlue/> 
@@ -93,7 +93,11 @@ const ModalOrder = (props) => {
                     <label>Số lượng vé</label>
                     <Form.Item name="quantity" rules={[{ required: true, message: 'Nhập số lượng vé!' }]}>
                         <div className="flex flex-row">
-                            <Input size="large" className="ticket justify-center items-center space-x-2" prefix={<MinusCircleOutlined onClick={() => numberTicket > 1 ? setNumberTicket(numberTicket-1) : setNumberTicket(1)}/>} suffix={<PlusCircleOutlined onClick={() => numberTicket < 10 ? setNumberTicket(numberTicket+1): setNumberTicket(numberTicket)} />} min={1} value={numberTicket} onChange={(e) => setNumberTicket(e.target.value)}/>
+                            <Space.Compact className="space-x-2 p-1" style={{backgroundColor: '#F3F3F3'}}>
+                                <MinusCircleOutlined style={{ fontSize: '20px' }} onClick={() => numberTicket > 1 ? setNumberTicket(numberTicket-1) : setNumberTicket(1)}/>
+                                <Input size="small" className="ticket justify-center items-center space-x-2" min={1} value={numberTicket} onChange={(e) => setNumberTicket(e.target.value)}/>
+                                <PlusCircleOutlined style={{ fontSize: '20px' }} onClick={() => numberTicket < 10 ? setNumberTicket(numberTicket+1): setNumberTicket(numberTicket)} />
+                            </Space.Compact>
                         </div>
                     </Form.Item>
                 </Col>

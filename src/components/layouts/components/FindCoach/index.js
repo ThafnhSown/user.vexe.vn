@@ -29,7 +29,7 @@ const FindCoach = () => {
   
     const handleFindCoach = async () => {
         const data = {
-            departureTime: startTime,
+            departureTime: startTime == 0 ? dayjs().valueOf() : startTime,
             endPointId: dropPoint,
             returnTime: endTime,
             startPointId: pickPoint,
@@ -39,7 +39,7 @@ const FindCoach = () => {
         let searchInfo = {
             startPoint: tmp.data[0]?.startPoint.location.district,
             endPoint: tmp.data[0]?.endPoint.location.district,
-            time: startTime
+            time: startTime == 0 ? dayjs().valueOf() : startTime
         }
         dispatch(setCurrentSearch(searchInfo))
         if(tmp.error == 0) {
@@ -59,10 +59,6 @@ const FindCoach = () => {
                         <Cascader showSearch={true} expandIcon={<div />} size='large' options={options} placeholder="Nhập điểm đón" displayRender={displayRender} expandTrigger='hover' onChange={(value) => value ? setPickPoint(value[1]) : null}/>
                     </div>
                     <div onClick={() => {
-                        // let tmp = dropPoint
-                        // setDropPoint(pickPoint)
-                        // setPickPoint(tmp)
-                        // console.log("after", pickPoint, dropPoint)
                     }}>
                     <ArrowRightOutlined />
                     </div>

@@ -8,11 +8,13 @@ import { requestLoadNewsFeed } from '../../../../redux/slices/userSlice'
 import NewsCard from '../components/NewsCard'
 import { requestLoadSubBanner } from '../../../../redux/slices/newsSlice'
 import ReactCardSlider from "react-card-slider-component";
+import { useNavigate } from 'react-router-dom'
 import './style.css'
 
 const { Title } = Typography
 
 const Home = () => {
+    const navigate = useNavigate()
     const dispatch = useAppDispatch()
     const listNews = useAppSelector(state => state.userState.newsFeed)
     const listSubBanner = useAppSelector(state => state.newsState.subBanner)
@@ -33,7 +35,9 @@ const Home = () => {
                 <div className='flex mobile:hidden desktop:flex space-x-6'>
                 {
                     listSubBanner.map(banner => <div className='w-1/3 overflow-hidden h-36'>
-                        <img className='rounded-lg object-cover h-full w-full' src={banner.imageUrl}/>
+                        <a href={banner.contentUrl} target='blank'>
+                            <img className='rounded-lg object-cover h-full w-full' src={banner.imageUrl} />
+                        </a>
                     </div>)
                 }
                 </div>
@@ -66,7 +70,7 @@ const Home = () => {
               
             </div>
             
-            <div className='flex flex-col justify-center items-center'>
+            <div className='flex flex-col justify-center items-center mt-4'>
             <Title level={2} style={{color:"#006D38"}}><p className='mobile:text-base desktop:text-3xl'>TẠI SAO NÊN CHỌN VEXE.VN</p></Title>
             <div className='flex mobile:flex-col desktop:flex-row justify-center space-x-6'>
                 <div className='flex flex-col items-center w-80 space-y-3 mobile:ml-4'>

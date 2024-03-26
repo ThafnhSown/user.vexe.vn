@@ -148,3 +148,7 @@ export const apiFindCoach = async (props) => {
 export const apiSubmitRequest = async (props) => {
     return ApiConfig("/global/submit-request", props)
 }
+
+export const apiListOfficeByUser = async (id) => {
+    return ApiConfig(`/global/get-company-office-list?companyId=${id}`, undefined, "GET")
+}

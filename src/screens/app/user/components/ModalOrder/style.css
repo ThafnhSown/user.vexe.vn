@@ -45,12 +45,15 @@ label a:hover {
     background-color: #006D38
 }
 
-.ticket input {
-    width: 10%;
+/* .ticket input {
     justify-content: center;
     align-items: center;
+} */
+.ticket {
+    width: 60%;
+    text-align: center;
 }
 
-.ticket .ant-input {
+/* .ticket .ant-input {
     margin:0px 30px 0px 30px !important;
-}
+} */
