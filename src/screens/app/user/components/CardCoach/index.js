@@ -8,14 +8,22 @@ const { Title } = Typography
 import dayjs from 'dayjs'
 import { apiListOfficeByUser } from '../../../../../api/services'
 import './style.css'
+import ModalOffice from '../ModalOffice'
+import ModalTravelPath from '../ModalTravelPath'
 
 const CardCoach = (props) => {
-    const { coach, setModalShow, setCurrentCoach } = props    
+    const { coach, setModalShow, setCurrentCoach } = props
     const [detail, setDetail] = useState(false)
+    const [officeShow, setOfficeShow] = useState(false)
+    const [officeData, setOfficeData] = useState()
+    const [tpShow, setTpShow] = useState(false)
 
     const handleLoadListOffice = async (id) => {
         const res = await apiListOfficeByUser(id)
-        console.log(res)
+        if(!res.data.error) {
+            setOfficeShow(true)
+            setOfficeData(res.data.data)
+        }
     }
 
     return (
@@ -46,7 +54,7 @@ const CardCoach = (props) => {
                         </Col>
                         <Col>
                             <Row className='mx-2 space-x-2 flex flex-row items-center'><IconCar /><p className="text-base font-bold">{coach.coachTypeName}</p></Row>
-                            <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-base font-bold"> Xuất bến: {coach.startPoint.location.district} - {coach.endPoint.location.district}</p></Row>
+                            <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-base font-bold"> Xuất bến:{`${coach.sectionId ? 'Đón +/- 20 phút' : `${coach.startPoint.location.district}`}`}</p></Row>
                         </Col>
                     </Row>
                     <div className='space-x-2 flex flex-row items-center'>
@@ -55,17 +63,17 @@ const CardCoach = (props) => {
                         {
                             detail ? <p>{coach.travelPath.detail}</p> : <p>{coach.travelPath.name}</p>
                         }
-                        <p className='text-green' onClick={() => setDetail(!detail)}>{`${!detail ?  'Chi tiết' : 'Ẩn'}`}</p>
+                        <p className='text-green' onClick={() => setTpShow(true)}>Chi tiết</p>
                     </div>
                     <div className='space-x-2 flex flex-row items-center'>
                         <MiniBlue/> 
-                        <p className='font-extrabold'>{coach.startPoint.location.district}</p>
-                        <p>= Trung chuyển đón {convert(coach.startPoint)} </p>
+                        <p className='font-extrabold'>{coach.startPoint.location.district}:</p>
+                        <p>{convert(coach.startPoint)} </p>
                     </div>
                     <div className='space-x-2 flex flex-row items-center'>
                         <MiniRed />
-                        <p className='font-extrabold'>{coach.endPoint.location.district}</p>
-                        <p>= Trung chuyển trả {convert(coach.endPoint)}</p>
+                        <p className='font-extrabold'>{coach.endPoint.location.district}:</p>
+                        <p>{convert(coach.endPoint)}</p>
                     </div>
                 </div>
 
@@ -105,7 +113,7 @@ const CardCoach = (props) => {
                         <Title className='w-1/3 mt-3' style={{color: '#006D38'}}>{dayjs(coach.departureTime).format("HH:mm")}</Title>
                         <div className='w-2/3 flex flex-col'>
                             <div className='space-x-2 flex flex-row items-center'><IconCar /><p className="text-xs font-bold">{coach.coachTypeName}</p></div>
-                            <div className='space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-xs font-bold"> Xuất bến: {coach.startPoint.location.district}</p></div>
+                            <div className='space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-xs font-bold"> Xuất bến: {`${coach.sectionId ? 'Đón +/- 20 phút' : `${coach.startPoint.location.district}`}`}</p></div>
                         </div>             
                         
                     </div>
@@ -117,17 +125,17 @@ const CardCoach = (props) => {
                                     <p className=''>{coach.travelPath.detail}</p>
                                 </div> : <p className='truncate'>{coach.travelPath.name}</p>
                         }
-                        <p className='text-green' onClick={() => setDetail(!detail)}>{`${!detail ?  'Chi tiết' : 'Ẩn'}`}</p>
+                        <p className='text-green' onClick={() => setTpShow(true)}>Chi tiết</p>
                     </div>
                     <div className='space-x-2 flex flex-row items-center'>
                         <MiniBlue/> 
-                        <p className='font-extrabold'>{coach.startPoint.location.district}</p>
-                        <p>= Trung chuyển đón {convert(coach.startPoint)} </p>
+                        <p className='font-extrabold'>{coach.startPoint.location.district}:</p>
+                        <p>{convert(coach.startPoint)} </p>
                     </div>
                     <div className='space-x-2 flex flex-row items-center'>
                         <MiniRed />
-                        <p className='font-extrabold'>{coach.endPoint.location.district}</p>
-                        <p>= Trung chuyển trả {convert(coach.endPoint)}</p>
+                        <p className='font-extrabold'>{coach.endPoint.location.district}:</p>
+                        <p>{convert(coach.endPoint)}</p>
                     </div>
 
                 <div className=''>
@@ -147,6 +155,13 @@ const CardCoach = (props) => {
             </div>
 
         </Card>
+        {
+            officeShow && <ModalOffice data={officeData} name={coach.coachCompany.name} logo={coach.coachCompany.logo} hotline={coach.coachCompany.hotline} modalShow={officeShow} setModalShow={setOfficeShow}/>
+
+        }
+        {
+            tpShow && <ModalTravelPath modalShow={tpShow} setModalShow={setTpShow} tp={coach.travelPath.detail}/>
+        }
         </div>
      
     )

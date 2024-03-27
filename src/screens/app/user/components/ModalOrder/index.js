@@ -48,13 +48,13 @@ const ModalOrder = (props) => {
                 </div>
               )}
             onCancel={() => setModalShow(false)}
-            width={800}
+            width={720}
         >
              <div className='flex flex-row h-20'>
                 <img src={currentCoach.coachCompany.logo} className='w-20 h-20 rounded-full'/>
                 <div className='flex flex-col h-12 mt-5 ml-4'>
                     <h1 className='font-bold text-lg'>{currentCoach.coachCompany.name}</h1>
-                    <p><PhoneFilled />Hotline: {currentCoach.coachCompany.hotline}</p>
+                    <p className="space-x-2 flex flex-row"><PhoneFilled /><p>Hotline: {currentCoach.coachCompany.hotline}</p></p>
                 </div>
             </div>
             <div className="border border-dashed border-green my-3 w-full" />
@@ -69,7 +69,7 @@ const ModalOrder = (props) => {
             <div className='space-x-2 flex flex-row items-center truncate'>
                         <IconTP />
                         <p className='font-extrabold'>Lộ trình:</p>
-                        <p className="overflow-scroll w-3/4">{currentCoach.travelPath.detail}</p>
+                        <p className="">{currentCoach.travelPath.name}</p>
                     </div>
                     <div className='space-x-2 flex flex-row items-center'>
                         <MiniBlue/> 
