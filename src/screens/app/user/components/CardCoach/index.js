@@ -54,7 +54,7 @@ const CardCoach = (props) => {
                         </Col>
                         <Col>
                             <Row className='mx-2 space-x-2 flex flex-row items-center'><IconCar /><p className="text-base font-bold">{coach.coachTypeName}</p></Row>
-                            <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-base font-bold"> Xuất bến:{`${coach.sectionId ? 'Đón +/- 20 phút' : `${coach.startPoint.location.district}`}`}</p></Row>
+                            <Row className='mx-2 space-x-2 flex flex-row items-center'><ClockCircleOutlined /><p className="text-base font-bold"> Xuất bến: {`${coach.sectionId ? 'Đón +/- 20 phút' : `${coach.startPoint.location.district}`}`}</p></Row>
                         </Col>
                     </Row>
                     <div className='space-x-2 flex flex-row items-center'>
